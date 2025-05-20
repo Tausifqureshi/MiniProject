@@ -1,0 +1,14 @@
+import React, { version } from "react";
+
+function App() {
+  return (
+    <>
+      <h1 className="text-3xl font-bold text-red-900 bg-yellow-300 p-5 ">
+        App {version}
+      </h1>
+      
+    </>
+  );
+}
+
+export default App;
