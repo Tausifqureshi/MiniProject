@@ -45,7 +45,6 @@ export default QueryExample;
 
 
 // Checkbox Toggle Example
-
 import React from "react";
 
 function QueryExample() {
