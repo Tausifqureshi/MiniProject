@@ -1,13 +1,14 @@
 // SearchInput Toggle Example
 // This component demonstrates how to toggle an input field and a button
-
 import React, { useState } from "react";
-function QueryExample() {
-  const [toggle, setToggle] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState("");
+function  SearchInput() {
+  const [toggle, setToggle] =useState(false);
+  const [inputValue, setInputValue] =useState("");
   const [showInput, setShowInput] = useState(true); // input dikh raha hai ya nahi
 
   const inputToggle = () => {
+    //  Toggle to input 
+    
     // setInputValue((prevValue) => !prevValue);
     // if (inputValue) {
     //   setInputValue("");
@@ -30,32 +31,33 @@ function QueryExample() {
       )}
 
       <button type="button" onClick={inputToggle}>
-        Toggle
-      </button>
+        Toggle to input 
+      </button> <br /> <br /> <br />
+
       <button type="button" onClick={() => setToggle(!toggle)}>
-        Click
+        Click to text toggle 
       </button>
       {toggle ? <p>Toggle is ON</p> : <p>Toggle is OFF</p>}
     </>
   );
 }
 
-export default QueryExample;
+export default SearchInput;
 
 
 
 // Checkbox Toggle Example
-import React from "react";
+// import React from "react";
 
-function QueryExample() {
-  const [toggle, setToggle] = React.useState(true);
-  return (
-    <div>
-      {toggle ? <p>Toggle is ON</p> : <p>Toggle is OFF</p>}
-      <input type="checkbox" name="" id="" checked={toggle} onChange={() => setToggle(!toggle)} />
-    </div>
-  );
+// function QueryExample() {
+//   const [toggle, setToggle] = React.useState(true);
+//   return (
+//     <div>
+//       {toggle ? <p>Toggle is ON</p> : <p>Toggle is OFF</p>}
+//       <input type="checkbox" name="" id="" checked={toggle} onChange={() => setToggle(!toggle)} />
+//     </div>
+//   );
 
-}
+// }
 
 // export default QueryExample;

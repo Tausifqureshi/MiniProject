@@ -1,42 +1,41 @@
-import React from "react";
+// import React from "react";
 
-function QueryExample() {
-  const [style, setStyle] = React.useState({
-    border: "2px solid green",
-    width: "100%",
-    height: "300px",
-    backgroundColor: "#f0f0f0", // starting color
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    textAlign: "center",
-    fontSize: "1.5em",
-    padding: "10px",
-    borderRadius: "5px",
-  });
+// function QueryExample() {
+//   const [style, setStyle] = React.useState({
+//     border: "2px solid green",
+//     width: "100%",
+//     height: "300px",
+//     backgroundColor: "#f0f0f0", // starting color
+//     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+//     textAlign: "center",
+//     fontSize: "1.5em",
+//     padding: "10px",
+//     borderRadius: "5px",
+//   });
 
-  const changeStyle = () => {
-    setStyle((prevStyle) => ({
-      ...prevStyle,
-      backgroundColor:
-        prevStyle.backgroundColor === "#f0f0f0" ? "blue" : "#f0f0f0",
-    }));
-  };
+//   const changeStyle = () => {
+//     setStyle((prevStyle) => ({
+//       ...prevStyle,
+//       backgroundColor:
+//         prevStyle.backgroundColor === "#f0f0f0" ? "blue" : "#f0f0f0",
+//     }));
+//   };
 
-  return (
-    <>
-      <p style={style}>Hello World</p>
-      <button onClick={changeStyle}>Theme Change</button>
-    </>
-  );
-}
+//   return (
+//     <>
+//       <p style={style}>Hello World</p>
+//       <button onClick={changeStyle}>Theme Change</button>
+//     </>
+//   );
+// }
 
 // export default QueryExample;
 
 
 
 // Tailwind use case example
-
 import React, { useState } from "react";
-function QueryExample() {
+function style() {
   const [isBlue, setIsBlue] = useState(false);
   return (
     <>
@@ -47,6 +46,7 @@ function QueryExample() {
       >
         Hello World
       </p>
+
       <button
         onClick={() => setIsBlue((prev) => !prev)}
         className="mt-2 p-2 bg-gray-300 rounded hover:bg-gray-400"
@@ -57,4 +57,4 @@ function QueryExample() {
   );
 }
 
-// export default QueryExample;
+export default style;

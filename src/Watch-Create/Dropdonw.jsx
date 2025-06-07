@@ -9,7 +9,7 @@ function Dropdonw() {
       <option value="green">Green</option>
       <option value="blue">Blue</option>
     </select>
-      <QueryExample color={color} /> */}
+      <Watch color={color} /> */}
     </div>
   )
 }

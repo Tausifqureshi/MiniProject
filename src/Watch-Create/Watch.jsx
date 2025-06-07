@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 
-function QueryExample({color}) {
+function Watch({color}) {
   const [time , setTime] = useState(0);
 
   useEffect(()=>{
@@ -18,4 +18,4 @@ function QueryExample({color}) {
     </div>
   )
 }
-export default QueryExample
+export default Watch
