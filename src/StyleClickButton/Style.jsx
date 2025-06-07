@@ -34,27 +34,27 @@
 
 
 // Tailwind use case example
-import React, { useState } from "react";
-function style() {
-  const [isBlue, setIsBlue] = useState(false);
-  return (
-    <>
-      <p
-        className={`border-2 border-green-600 w-full h-[300px] text-center text-xl p-4 rounded shadow ${
-          isBlue ? "bg-blue-500 text-white" : "bg-gray-100"
-        }`}
-      >
-        Hello World
-      </p>
+// import { useState } from "react";
+// function style() {
+//   const [isBlue, setIsBlue] = useState(false);
+//   return (
+//     <>
+//       <p
+//         className={`border-2 border-green-600 w-full h-[300px] text-center text-xl p-4 rounded shadow ${
+//           isBlue ? "bg-blue-500 text-white" : "bg-gray-100"
+//         }`}
+//       >
+//         Hello World
+//       </p>
 
-      <button
-        onClick={() => setIsBlue((prev) => !prev)}
-        className="mt-2 p-2 bg-gray-300 rounded hover:bg-gray-400"
-      >
-        Theme Change
-      </button>
-    </>
-  );
-}
+//       <button
+//         onClick={() => setIsBlue((prev) => !prev)}
+//         className="mt-2 p-2 bg-gray-300 rounded hover:bg-gray-400"
+//       >
+//         Theme Change
+//       </button>
+//     </>
+//   );
+// }
 
-export default style;
+// export default style;
