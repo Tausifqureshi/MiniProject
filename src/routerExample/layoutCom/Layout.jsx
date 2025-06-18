@@ -1,17 +1,39 @@
 
 // NavbarDropdown.jsx
-import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Outlet, Link , useLocation, useNavigate} from "react-router-dom";
+import { useAuth } from "../contexAPI/AuthProvider ";
 
 export default function Layout() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+const { user, logout } = useAuth();
+const location = useLocation();
+const navigate = useNavigate();
 
+  const handleLogout = () => {
+    logout();
+    navigate("/login", {state: { from: location.pathname },});
+
+  };
 
 
   const closeDropdown = () => {
-    setDropdownOpen(false);
+    setDropdownOpen(false); //
     console.log("closeDropdown");
   };
+
+    const dropdownRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen font-sans">
@@ -31,18 +53,23 @@ export default function Layout() {
               Contact
             </Link>
 
-            {/* 🔻 Dashboard Dropdown */}
-            <div className="relative">
+             {/* 🔻 Dashboard Dropdown */}
+            <div className="relative group" ref={dropdownRef}
+            onMouseEnter={() => window.innerWidth >= 768 && setDropdownOpen(true)} // hover open (desktop)
+            onMouseLeave={() => window.innerWidth >= 768 && setDropdownOpen(false)} // hover close (desktop)
+            >
               <button
-                // onClick={toggleDropdown}
                  onClick={() => setDropdownOpen(!dropdownOpen)  }
                 className="hover:underline focus:outline-none px-2 py-1"
+                 aria-haspopup="true"
+                aria-expanded={dropdownOpen}
+                
               >
-                Dashboard
+                Dashboard <span className="text-xl">&#9662;</span> {/* Unicode arrow */}
               </button>
 
               {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-white text-black shadow-lg rounded z-50 min-w-[150px]">
+                <div className="absolute hidden group-hover:block top-full left-0  bg-white text-black shadow-lg rounded z-50 min-w-[150px]">
                   <Link
                     to="/dashboard"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -50,6 +77,7 @@ export default function Layout() {
                   >
                     Dashboard Home
                   </Link>
+
                   <Link
                     to="/profile"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -57,6 +85,7 @@ export default function Layout() {
                   >
                     Profile
                   </Link>
+
                   <Link
                     to="/settings"
                     className="block px-4 py-2 hover:bg-gray-100"
@@ -68,9 +97,28 @@ export default function Layout() {
               )}
             </div>
 
-            <Link to="/login" className="hover:underline" onClick={closeDropdown}>
+            {/* <Link to="/login" className="hover:underline" onClick={closeDropdown}>
               Login
-            </Link>
+            </Link> */}
+
+          {user ? (
+        <a
+          onClick={handleLogout}
+          className="cursor-pointer hover:bg-indigo-600 hover:text-white transition px-2 py-1 rounded"
+          // style={{ color: mode === "dark" ? "#fff" : "#212529" }}
+        >
+          Logout
+        </a>
+      ) : (
+        <Link
+        onClick={closeDropdown}
+          to="/login"
+          className="hover:bg-indigo-600 hover:text-white transition px-2 py-1 rounded"
+          // style={{ color: mode === "dark" ? "#fff" : "#212529" }}
+        >
+          Sign-in
+        </Link>
+      )}
           </nav>
         </div>
       </header>
@@ -87,24 +135,6 @@ export default function Layout() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

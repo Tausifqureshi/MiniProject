@@ -1,20 +1,22 @@
 import { useAuth } from "../contexAPI/AuthProvider ";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react"; // Optional: icon library if you're using it
 
 export default function Login() {
   const { login, user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const patName = location.state?.from || "/";
 
   const handleLogin = () => {
     const dummyUser = { name: "Tausif", email: "test@example.com" };
     login(dummyUser);
-    navigate("/");
+    navigate(patName);
     console.log("Login clicked");
   };
 
   const handleBack = () => {
-    navigate("/");
+    navigate("/" );
   };
 
   return (
