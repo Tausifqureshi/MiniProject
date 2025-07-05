@@ -171,3 +171,30 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 \end{onecolentry}
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+# Udemy Clone Project line 
+# Built course pages with category filters, detailed content, and cart features
+# Built state logic with Context API and useReducer handled navigation via React Router // tool kaam dono show 
+
+
+
+# Udemy Clone   GitHub | Live  
+Udemy Clone   GitHub | Live  
+# Online course platform replicating key Udemy features.  
+# • Built course listing with category filters, detail view, and cart features  
+# • Managed global state using Context API and useReducer implemented navigation with React Router  
+# Tech Stack: React, Context API, useReducer, React Router, HTML, CSS, JavaScript
+
+
+
+
+# bhai overlef me 4 ke ke compiler hai  J bro inke bare me smaja 
