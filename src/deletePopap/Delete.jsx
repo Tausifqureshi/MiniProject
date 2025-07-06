@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 function Delete({ onDelete, onClose }) {
-//   const handleDelete = () => {
-//     onDelete();
-//     onClose();
-//   };
+  //   const handleDelete = () => {
+  //     onDelete();
+  //     onClose();
+  //   };
 
   return (
     <div className="delete-popup">
@@ -14,36 +14,5 @@ function Delete({ onDelete, onClose }) {
   );
 }
 export default Delete;
-
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
