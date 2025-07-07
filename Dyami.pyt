@@ -358,3 +358,12 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 \end{onecolentry}
 
 \end{document}
+
+
+
+
+
+
+
+
+# Hanumant Technology Software Training Institute ----> 
