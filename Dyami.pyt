@@ -345,7 +345,7 @@ Beauty product website clone built for UI/UX practice.
 \end{itemize}
 \textbf{Tech Stack:} HTML, CSS, JavaScript, LocalStorage
 \end{onecolentry}
-\SectionBreak
+\SectionBreak    
 
 % ---------------------- Soft Skills ----------------------
 \section{Soft Skills}
