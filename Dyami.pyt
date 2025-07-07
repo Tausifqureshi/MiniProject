@@ -184,10 +184,6 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 
 # ================================================================================================================
 # ATs xelatex compiler code
-
-
-
-
 % ---------------------- Document Class & Packages ----------------------
 \documentclass[10pt, letterpaper]{article}
 
