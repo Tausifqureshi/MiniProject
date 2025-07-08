@@ -264,3 +264,114 @@ export default Dropdonw
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ATS Tip
+// Adding this job's company name and web address can help us provide you ATS-specific tips.
+// Update scan information
+// Contact Information
+// We did not find an address in your resume. Recruiters use your address to validate your location for job matches.
+// You provided your email. Recruiters use your email to contact you for job matches.
+// You provided your phone number.
+// Summary
+// We found a summary section on your resume. Good job! The summary provides a quick overview of the candidate's qualifications, helping recruiters and hiring managers promptly grasp the value the candidate can offer in the position.
+// Section Headings
+// We found the education section in your resume.
+// We found the work experience section in your resume.
+// Your Work Experience section appears empty. We recommend that this section should showcase at least one listing, even if it is just an internship or a personal project.
+// Job Title Match
+// The job title 'React.js Developer' from the job description was not found in your resume. We recommend having the exact title of the job for which you're applying in your resume. This ensures you'll be found when a recruiter searches by job title. If you haven't held this position before, include it as part of your summary statement.
+// Update scan information
+// Date Formatting
+// ATS and recruiters prefer specific date formatting for your work experience. Please use the following formats: “MM/YY or MM/YYYY or Month YYYY” (e.g. 03/19, 03/2019, Mar 2019 or March 2019).
+// Education Match
+// Your education matches the preferred (Bachelor) education listed in the job description.
+// Update required education level
+// File Type
+// You are using a .pdf resume, which is the preferred format for most ATS systems.
+// Your file name doesn't contain special characters that could cause an error in ATS.
+// Your file name is concise and readable.
+
+
+// Skill 
+// Resume
+// Job Description
+// javascript
+// 4
+// 3
+// coding
+// 3
+// 3
+// performance testing
+// 2
+// Upgrade to view
+// 2
+// Upgrade to view
+// 2
+// redux
+// 4
+// 2
+// project management skills
+// 1
+// information technology
+// 1
+// Front-end development
+// 1
+// user interface design
+// 1
+// Don't see skills from the job description? 
+
+
+// Skill 
+// Resume
+// Job Description
+// troubleshooting
+// 2
+// Management Skills
+// 1
+// Don't see skills from the job description? 
+// Job Level Match
+// No specific years of experience were found in this job description. Focus on matching your skills and qualifications to the role's requirements. Consider how your experience, regardless of duration, aligns with the job's key responsibilities before applying.
+// Measurable Results
+// We found 1 mentions of measurable results in your resume. Consider adding at least 5 specific achievements or impact you had in your job (e.g. time saved, increase in sales, etc).
+// Resume Tone
+// We've found some negative phrases or cliches in your resume:
+// Web Presence
+// Consider adding a website or Linkedin url to build your web credibility. Recruiters appreciate the convenience and credibility associated with a professional website.
+// Word Count
+// There are 306 words in your resume, which is under the suggested 1000 word count for relevance and ease of reading reasons.
+// Formatting analysis is unavailable for PDF files. To receive tailored recommendations, please upload your resume in .docx format. In the meantime, here are some general tips to ensure your resume is easily read by the ATS, Recruiters and Hiring Managers.
+// Font check
+// We recommend using bold styling for job titles, company names, and your name to help improve readability.
+// Ensure your resume text is a readable color, with adequate contrast to the document background.
+// Your resume should contain only 1 or 2 font faces to maintain readability.
+// We recommend standard fonts such as Open Sans, Roboto, or Lato for readability and ATS-compatibility.
+// The average font size of your resume should meet readability and ATS standards.
+// Do not overuse special characters in your resume. These characters can cause errors in ATS and make your resume look less professional.
+// Layout
+// Avoid embedding images in your resume if you’re applying to jobs within North America. Some ATS cannot read images and might cause formatting errors.
+// Avoid using tables in your resume. Some ATS might not be able to correctly parse tables. Text can be out of order or combined into one text blob.
+// We recommend using left align for text sections as it enhances readability for a recruiter. Text justify is not recommended because some ATS’s can’t detect spaces between justified text blocks.
+// Page Setup
+// Avoid adding information to the footer of your resume document. Some ATS can’t accurately parse headers or footers, which could affect your formatting or searchability.
+// Avoid adding information to the header of your resume document. Some ATS can’t accurately parse headers or footers,which could affect yourformatting or searchability.
+// The margins on your resume should be of a consistent and standard size. We recommend margins between 0.5 and 1 inch for ease of reading.
+// Ensure your resume fits within standard A4 or Letter page size to maintain compatibility across different platforms and devices.
