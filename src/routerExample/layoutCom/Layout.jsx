@@ -61,7 +61,7 @@ const navigate = useNavigate();
               <button
                  onClick={() => setDropdownOpen(!dropdownOpen)  }
                 className="hover:underline focus:outline-none px-2 py-1"
-                 aria-haspopup="true"
+                 aria-haspopup="true"  
                 aria-expanded={dropdownOpen}
                 
               >
@@ -79,7 +79,7 @@ const navigate = useNavigate();
                   </Link>
 
                   <Link
-                    to="/profile"
+                    to="/dashboard/profile"
                     className="block px-4 py-2 hover:bg-gray-100"
                     onClick={closeDropdown}
                   >

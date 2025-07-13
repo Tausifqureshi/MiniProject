@@ -12,7 +12,7 @@ import {
   Contact,
   Login,
   ErrorPage,
-  Dashboard,
+  Dashboard,   
   Profile,
 } from "./page/index";
 import AuthProvider from "./contexAPI/AuthProvider ";
