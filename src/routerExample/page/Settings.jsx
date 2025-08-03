@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import { useAuth } from "../contexAPI/AuthProvider ";
 
-function Profile() {
-  
-     return (
+function Settings() {
+  const { login, user } = useAuth();
+
+  return (
     <div>
-       <div className="flex flex-col items-center space-y-4 bg-white p-6 rounded-xl shadow-md max-w-md mx-auto">
-        <h2 className="text-2xl font-bold text-gray-800">Profile Page</h2>
+      <div className="flex flex-col items-center space-y-4 bg-white p-6 rounded-xl shadow-md max-w-md mx-auto">
+        <h2 className="text-2xl font-bold text-gray-800">Setting Page</h2>
         {user ? (
           <div className="space-y-1 text-center">
             <h1 className="text-lg text-gray-600">
@@ -28,7 +30,6 @@ function Profile() {
       </div>
     </div>
   );
-  
 }
 
-export default Profile  
+export default Settings;

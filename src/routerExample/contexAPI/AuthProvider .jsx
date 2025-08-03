@@ -2,14 +2,22 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
- const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [userName, setUserName] = useState("Tausif"); 
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(() => {
+     try {
+      const storedUser = localStorage.getItem("user");
+      return storedUser ? JSON.parse(storedUser) : null;
+     } catch (error) {
+      console.error("Error parsing user from localStorage:", error);
+      return null;
+     }
+  });
+  const [userName, setUserName] = useState("");
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) setUser(storedUser);
-  }, []);
+  // useEffect(() => {
+  //   const storedUser = JSON.parse(localStorage.getItem("user"));
+  //   if (storedUser) setUser(storedUser);
+  // }, []);
 
   const login = (userData) => {
     setUser(userData);
@@ -22,7 +30,9 @@ const AuthContext = createContext();
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout , userName, setUserName}}>
+    <AuthContext.Provider
+      value={{ user, login, logout, userName, setUserName }}
+    >
       {children}
     </AuthContext.Provider>
   );

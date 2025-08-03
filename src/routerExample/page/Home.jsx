@@ -4,7 +4,7 @@ import { useAuth } from "../contexAPI/AuthProvider ";
 export default function Home() {
   const { userName, setUserName, user } = useAuth();
   function handleChange() {
-    setUserName(userName === "Tausif" ? "Qureshi" : "Tausif")
+    // setUserName(userName === "Tausif" ? "Qureshi" : "Tausif")
   }
 
       
@@ -12,7 +12,7 @@ export default function Home() {
 return (
   <div className="flex flex-col items-center justify-clenter bg-gray-50 p-4">
     <div className="bg-white p-8 rounded-xl shadow-lg text-center space-y-6">
-      <h1 className="text-3xl font-bold text-gray-800">🏠 Home Page</h1>
+      <h1 className="text-4xl font-bold text-gray-800 ">🏠 Home Page</h1>
 
       {/* <h2 className="text-xl text-gray-600">Welcome, {userName}</h2> */}
        <h2 className="text-xl text-gray-700">
