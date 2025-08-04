@@ -38,7 +38,7 @@ export default function Layout() {
   ];
 
   const dashboardLinks = [
-    // { name: "Dashboard", path: "/dashboard" },
+    { name: "Dashboard", path: "/dashboard" },
     { name: "Profile", path: "/dashboard/profile" },
     { name: "Settings", path: "/dashboard/settings" },
   ];
@@ -49,39 +49,23 @@ export default function Layout() {
     closeMenus(); //
   };
 
-  //   const handleDashboardClick = () => {
-  //     // if (user) {  //agar muje dropwond pe click karte hi naviget karna dashbora tu yaha approch usr upper dashbordlink me pth dashbord wali command karna hoga
-  //     //   navigate("/dashboard"); // 🔁 Navigate to Dashboard page
-  //     //   setDropdownOpen(!dropdownOpen); // Open dropdown menu
-  //     // } else {
-
-  //     //   navigate("/login", { state: { from: "/dashboard" } }); // If not logged in, go to login
-  //     // }
-
-  //     if (user) {
-  //     navigate("/dashboard");         // 🔁 Redirect to dashboard
-  //   } else {
-  //     navigate("/login", { state: { from: "/dashboard" } }); // 🔐 Redirect to login
-  //   }
-
-  // //  setDropdownOpen(!dropdownOpen)
-  //   };
-
   const handleDashboardClick = () => {
-    if (!user) {
-      // 🔐 Agar user login nahi hai
-      navigate("/login", { state: { from: "/dashboard" } });
-      return;
-    }
+    // if (!user) {  //agar muje dropwond pe click karte hi naviget karna dashbora tu yaha approch usr upper dashbordlink me pth dashbord wali command karna hoga
+    //   // 🔐 Agar user login nahi hai
+    //   navigate("/login", { state: { from: "/dashboard" } });
+    //   return;
+    // }
 
-    if (dropdownOpen === false) {
-      // ✅ Agar dropdown abhi band hai → open karo
-      setDropdownOpen(true);
-    } else {
-      // ✅ Agar dropdown abhi open hai → dashboard bhejo + dropdown band karo
-      navigate("/dashboard");
-      setDropdownOpen(false);
-    }
+    // if (dropdownOpen === false) {
+    //   // ✅ Agar dropdown abhi band hai → open karo
+    //   setDropdownOpen(true);
+    // } else {
+    //   // ✅ Agar dropdown abhi open hai → dashboard bhejo + dropdown band karo
+    //   navigate("/dashboard");
+    //   setDropdownOpen(false);
+    // }
+
+    setDropdownOpen(!dropdownOpen)
   };
 
   const closeMenus = () => {
