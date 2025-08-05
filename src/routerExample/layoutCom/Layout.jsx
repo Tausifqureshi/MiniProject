@@ -99,7 +99,7 @@ export default function Layout() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 relative">
+          <nav className="hidden md:flex items-center space-x-6">
             {mainLinks.map((link) => (
               <Link
                 key={link.name}
