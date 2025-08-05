@@ -87,7 +87,7 @@ export default function Layout() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  return (
+  return (  
     <div className="flex flex-col min-h-screen font-sans">
       {/* Header */}
       <header className="bg-blue-600 text-white p-4 shadow-md">
