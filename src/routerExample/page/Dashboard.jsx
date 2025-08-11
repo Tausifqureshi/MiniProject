@@ -111,5 +111,3 @@ export default Dashboard;
 //     </header>
 //   );
 // }
-
-// meri baat samj smaja na tu chutiya jab dasbord userlgin hai tu dasbord pe clcik karte hi dasbord show hoga mene aisi condison di hai if user fir dropdown me yaha line q dasbordhome obhi tu dasbord pe hi leke jara hao na tu yaha linke ki kya zarut agr o dasbordhome apne alag page pe alke ajra ho tu thik hai leki  yaha unessery line hohi na muje sirf propfile or setting dehkna unka path alaga hai dasbordhome dasbord ka same path hai jis se dropdown pe cilck karn pe pe jara dasbord pe or jab dropwond open hora us me jab yaha link ari dashbordhom same path yaha shai nhi hai
