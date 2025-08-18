@@ -263,72 +263,9 @@ export default function Layout() {
 
 
 
-// import { useState } from "react";
-// import { Menu, X, ChevronDown } from "lucide-react";
 
-// export default function Layout() {
-//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-//   return (
-//     <header className="bg-white shadow-md sticky top-0 z-50">
-//       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between items-center h-16">
-//           {/* Logo */}
-//           <div className="flex items-center">
-//             <span className="text-xl font-bold text-blue-600">MyApp</span>
-//           </div>
 
-//           {/* Desktop Nav */}
-//           <nav className="hidden md:flex space-x-6">
-//             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Dashboard</a>
-//             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
-//             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Team</a>
-//           </nav>
 
-//           {/* Right Side */}
-//           <div className="flex items-center space-x-4">
-//             {/* Avatar Dropdown (desktop) */}
-//             <div className="hidden md:block relative group">
-//               <button className="flex items-center space-x-2 focus:outline-none">
-//                 <img
-//                   src="https://i.pravatar.cc/32"
-//                   alt="User Avatar"
-//                   className="w-8 h-8 rounded-full"
-//                 />
-//                 <ChevronDown className="w-4 h-4 text-gray-500" />
-//               </button>
-//               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition duration-150 ease-in-out z-20">
-//                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
-//                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-//                 <a href="#" className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</a>
-//               </div>
-//             </div>
 
-//             {/* Mobile Menu Toggle */}
-//             <button
-//               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-//               className="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none"
-//             >
-//               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
 
-//       {/* Mobile Menu */}
-//       {mobileMenuOpen && (
-//         <div className="md:hidden bg-white shadow-sm border-t">
-//           <nav className="flex flex-col p-4 space-y-2">
-//             <a href="#" className="text-gray-700 hover:text-blue-600">Dashboard</a>
-//             <a href="#" className="text-gray-700 hover:text-blue-600">Projects</a>
-//             <a href="#" className="text-gray-700 hover:text-blue-600">Team</a>
-//             <hr />
-//             <a href="#" className="text-gray-700 hover:text-blue-600">Profile</a>
-//             <a href="#" className="text-gray-700 hover:text-blue-600">Settings</a>
-//             <a href="#" className="text-red-600 hover:text-red-700">Logout</a>
-//           </nav>
-//         </div>
-//       )}
-//     </header>
-//   );
-// }
