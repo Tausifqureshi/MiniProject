@@ -9,7 +9,7 @@
     right=1.1cm
 ]{geometry}
 \usepackage{titlesec}
-\usepackage{enumitem}
+\usepackage{enumitem} 
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
 \usepackage{changepage}
