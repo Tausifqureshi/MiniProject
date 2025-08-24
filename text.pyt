@@ -188,11 +188,10 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 
 
 # Udemy Clone   GitHub | Live  
-Udemy Clone   GitHub | Live  
 # Online course platform replicating key Udemy features.  
-# • Built course listing with category filters, detail view, and cart features  
+# • Built course pages category filters, detail view, and cart features  
 # • Managed global state using Context API and useReducer implemented navigation with React Router  
-# Tech Stack: React, Context API, useReducer, React Router, HTML, CSS, JavaScript
+# Tech Stack: React, Context API, useReducer, React Router, JavaScript, CSS,
      
 
 
