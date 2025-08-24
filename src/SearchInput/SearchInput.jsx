@@ -80,21 +80,3 @@ export default SearchInput;
 
 
 
-
-
-
-// \section*{Education}
-// \textbf{Front-End Web Development Certification (Ongoing)} \\
-// Codeprog — Advanced React.js, Redux, Routing, APIs, real-world projects \hfill Feb 2023 -- Sept 2024 \\
-
-// \textbf{Front-End Skill Development Program} \\
-// Bootcamp-style self-learning: HTML, CSS, JavaScript, React, Git workflows \hfill Jan 2021 -- Jan 2023 \\
-
-// \textbf{Bachelor of Computer Applications (BCA)} \\
-// Institute of Management and Engineering, New Delhi \hfill Jul 2017 -- Jun 2020
-
-
-
-
-// Technical Skills kine last add
-// Concepts: Responsive Design, SPA, State Management, RESTful APIs, Cross-Browser Compatibility, Component Lifecycle

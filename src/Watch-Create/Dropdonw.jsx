@@ -57,7 +57,7 @@ export default Dropdonw
 
 
 
-// 83 score new resume text edution add
+// 83 score new resume text edution add 
 
 // % ---------------------- Document Class & Packages ----------------------
 // \documentclass[10pt, letterpaper]{article}
