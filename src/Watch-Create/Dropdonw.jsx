@@ -44,21 +44,7 @@ export default Dropdonw
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 83 score new resume text edution add 
-
+// // Bina Practical Expriecne ke sath ats scrore 73
 // % ---------------------- Document Class & Packages ----------------------
 // \documentclass[10pt, letterpaper]{article}
 
@@ -139,25 +125,25 @@ export default Dropdonw
 // % ---------------------- Professional Summary ----------------------
 // \section{Professional Summary}
 // \begin{onecolentry}
-// Aspiring Front-End Developer with hands-on experience in building responsive and accessible web applications using React.js, JavaScript, and modern UI frameworks. Strong foundation in RESTful API integration, component-driven development, and performance optimization. Passionate about clean code, usability, and continuous learning in Agile-based workflows.
+// Aspiring Front-End Developer with hands-on experience in building responsive, accessible, and dynamic web applications using React.js, JavaScript, and modern UI frameworks. Strong foundation in RESTful API integration, component-driven development, and performance optimization. Passionate about clean code, usability, and continuous learning in Agile workflows.
 // \end{onecolentry}
 // \SectionBreak
 
 // % ---------------------- Technical Skills ----------------------
 // \section{Technical Skills}
 // \begin{onecolentry}
-// \textbf{Languages:} HTML, CSS, JavaScript \\
+// \textbf{Languages:} HTML5, CSS3, JavaScript (ES6+) \\
 // \textbf{Libraries/Frameworks:} React.js, Redux, React Router, Tailwind CSS, Bootstrap, Material-UI \\
-// \textbf{Tools:} Git, GitHub, Firebase, Chrome DevTools, Postman, VS Code
+// \textbf{Tools:} Git, GitHub, VS Code, Firebase, Postman, Chrome DevTools \\
+// \textbf{Concepts:} REST API, Responsive Design, Component-driven Development, Agile Methodology
 // \end{onecolentry}
 // \SectionBreak
-
 
 // % ---------------------- Education ----------------------
 // \section{Education}
 // \begin{onecolentry}
 
-// \textbf{React Development Certification (Expected)} \hfill Sept 2024 \\
+// \textbf{React Development} \hfill Sept 2024 \\
 // Codeprog – Online Bootcamp
 
 // \vspace{6pt}
@@ -176,58 +162,45 @@ export default Dropdonw
 
 // \SectionBreak
 
-// % ---------------------- Practical Experience ----------------------
-// \section{Practical Experience}
-// \begin{onecolentry}
-// \textbf{React.js Developer (Self Projects)} \hfill Feb 2022 -- Present \\
-// Built real-world web applications through self-learning and personal projects using modern React stack.
-
-// \begin{itemize}[left=10pt, topsep=0pt, noitemsep]
-//   \item Developed responsive SPAs using React.js, Redux, and React Router
-//   \item Integrated 5+ REST APIs using Axios to enable dynamic data rendering
-//   \item Improved performance by optimizing code structure and reducing unnecessary re-renders
-//   \item Practiced Agile sprints and used Git/GitHub for version control
-// \end{itemize}
-// \end{onecolentry}
-// \SectionBreak
-
 // % ---------------------- Projects ----------------------
 // \section{Projects}
 // \begin{onecolentry}
-// \textbf{Udemy Clone} \hfill 
-// \href{https://github.com/Tausifqureshi/Udemy-Clone}{GitHub} |
-// \href{https://65d3989f42b0a515514a520e--polite-palmier-e23c7f.netlify.app/}{Live} \\
-// Online course platform replicating key Udemy features.
-// \begin{itemize}[left=10pt, topsep=0pt, noitemsep]
-//   \item Dynamic course list with search, filtering, cart
-//   \item Implemented Redux for global state, React Router for navigation
-// \end{itemize}
-// \textbf{Tech Stack:} React, Redux, HTML, CSS, JavaScript
-
-// \vspace{6pt}
 // \textbf{StoreFusion-Digital} \hfill 
 // \href{https://github.com/Tausifqureshi/StoreFusion-Digital}{GitHub} |
 // \href{https://storefusion-digital.netlify.app/}{Live} \\
 // E-commerce platform for digital product sales.
 // \begin{itemize}[left=10pt, topsep=0pt, noitemsep]
-//   \item Firebase auth, product management, and secure checkout
-//   \item Tailwind CSS and responsive mobile-first UI
+//   \item Developed responsive SPA using React.js, Redux, and React Router
+//   \item Integrated Firebase authentication, product management, and secure checkout
+//   \item Applied Agile methodology and Git/GitHub version control
 // \end{itemize}
 // \textbf{Tech Stack:} React, Firebase, Tailwind CSS, Material-UI
+
+// \vspace{6pt}
+// \textbf{Udemy Clone} \hfill 
+// \href{https://github.com/Tausifqureshi/Udemy-Clone}{GitHub} |
+// \href{https://65d3989f42b0a515514a520e--polite-palmier-e23c7f.netlify.app/}{Live} \\
+// Online course platform replicating key Udemy features.
+// \begin{itemize}[left=10pt, topsep=0pt, noitemsep]
+//   \item Built dynamic course list with search, filtering, and cart functionality
+//   \item Implemented Redux for global state management and React Router for navigation
+//   \item Optimized component structure to reduce re-rendering and improve performance
+// \end{itemize}
+// \textbf{Tech Stack:} React, Redux, HTML, CSS, JavaScript
 
 // \vspace{6pt}
 // \textbf{Rodan+Fields Clone} \hfill 
 // \href{https://github.com/Tausifqureshi/RodanAndFields_clone}{GitHub} |
 // \href{https://rodanfieldwebsite.netlify.app/home.html}{Live} \\
-// Beauty product website clone built for UI/UX practice.
+// Beauty product website clone for UI/UX practice.
 // \begin{itemize}[left=10pt, topsep=0pt, noitemsep]
-//   \item LocalStorage cart system, login simulation, semantic HTML
-//   \item Optimized for browser performance and mobile responsiveness
+//   \item Implemented LocalStorage cart system and simulated login
+//   \item Ensured semantic HTML and cross-browser compatibility
+//   \item Optimized for mobile responsiveness and performance
 // \end{itemize}
 // \textbf{Tech Stack:} HTML, CSS, JavaScript, LocalStorage
 // \end{onecolentry}
 // \SectionBreak
-
 
 // % ---------------------- Soft Skills ----------------------
 // \section{Soft Skills}
@@ -236,28 +209,6 @@ export default Dropdonw
 // \end{onecolentry}
 
 // \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

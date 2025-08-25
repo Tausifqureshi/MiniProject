@@ -1,5 +1,7 @@
 
-# ATS Score 83 hai is ka bro
+
+
+
 % ---------------------- Document Class & Packages ----------------------
 \documentclass[10pt, letterpaper]{article}
 
@@ -97,6 +99,15 @@ Aspiring Front-End Developer with hands-on experience in building responsive and
 % ---------------------- Education ----------------------
 \section{Education}
 \begin{onecolentry}
+
+\textbf{React Development Certification (Expected)} \hfill Sept 2024 \\
+Codeprog – Online Bootcamp
+
+\vspace{6pt}
+\textbf{Front-End Web Development} \hfill Dec 2022 -- June 2023 \\
+Hanumant Technology Software Training Institute, Lucknow
+
+\vspace{6pt}
 \textbf{Bachelor of Computer Applications (BCA)} \hfill July 2017 -- June 2020 \\
 Institute of Management and Engineering, New Delhi
 
@@ -104,11 +115,8 @@ Institute of Management and Engineering, New Delhi
 \textbf{Higher Secondary (12th)} \hfill May 2014 -- June 2016 \\
 AL-Hind Distance Education Academy, Laxmi Nagar, New Delhi
 
-\vspace{6pt}
-\textbf{Front-End Web Development (Self-Learning)} \hfill 2022 -- Present \\
-Completed hands-on learning via Udemy, YouTube tutorials, and personal projects. \\
-\textbf{Certification:} React Development by Codeprog (Expected Sept 2024)
 \end{onecolentry}
+
 \SectionBreak
 
 % ---------------------- Practical Experience ----------------------
@@ -129,17 +137,6 @@ Built real-world web applications through self-learning and personal projects us
 % ---------------------- Projects ----------------------
 \section{Projects}
 \begin{onecolentry}
-\textbf{Udemy Clone} \hfill 
-\href{https://github.com/Tausifqureshi/Udemy-Clone}{GitHub} |
-\href{https://65d3989f42b0a515514a520e--polite-palmier-e23c7f.netlify.app/}{Live} \\
-Online course platform replicating key Udemy features.
-\begin{itemize}[left=10pt, topsep=0pt, noitemsep]
-  \item Dynamic course list with search, filtering, cart
-  \item Implemented Redux for global state, React Router for navigation
-\end{itemize}
-\textbf{Tech Stack:} React, Redux, HTML, CSS, JavaScript
-
-\vspace{6pt}
 \textbf{StoreFusion-Digital} \hfill 
 \href{https://github.com/Tausifqureshi/StoreFusion-Digital}{GitHub} |
 \href{https://storefusion-digital.netlify.app/}{Live} \\
@@ -149,6 +146,17 @@ E-commerce platform for digital product sales.
   \item Tailwind CSS and responsive mobile-first UI
 \end{itemize}
 \textbf{Tech Stack:} React, Firebase, Tailwind CSS, Material-UI
+
+\vspace{6pt}
+\textbf{Udemy Clone} \hfill 
+\href{https://github.com/Tausifqureshi/Udemy-Clone}{GitHub} |
+\href{https://65d3989f42b0a515514a520e--polite-palmier-e23c7f.netlify.app/}{Live} \\
+Online course platform replicating key Udemy features.
+\begin{itemize}[left=10pt, topsep=0pt, noitemsep]
+  \item Dynamic course list with search, filtering, cart
+  \item Implemented Redux for global state, React Router for navigation
+\end{itemize}
+\textbf{Tech Stack:} React, Redux, HTML, CSS, JavaScript
 
 \vspace{6pt}
 \textbf{Rodan+Fields Clone} \hfill 
@@ -180,18 +188,15 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 
 
 
-
-# Udemy Clone Project line 
-# Built course pages with category filters, detailed content, and cart features
-# Built state logic with Context API and useReducer handled navigation via React Router // tool kaam dono show 
-
-
-
 # Udemy Clone   GitHub | Live  
 # Online course platform replicating key Udemy features.  
 # • Built course pages category filters, detail view, and cart features  
-# • Managed global state using Context API and useReducer implemented navigation with React Router  
-# Tech Stack: React, Context API, useReducer, React Router, JavaScript, CSS,
+# • Managed global state using Context API and useReducer implemented navigation with React Router // tool kaam dono show 
+# Tech Stack: React, Context API, useReducer, React Router, JavaScript, CSS
+
+
+# ha bana de lekin practical expriemce section nhi sahi fresjer ke liyue interviewer bbi cofisue hoga kkya hai yaja or porject me kya haio muje brest sultion nikal ke de ji se 83 ho score aye or ats keyword se resume stromng ho aisa 
+
      
 
 
@@ -281,3 +286,14 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 # user interface design
 # 1
 # muje na jibscne yaha bata ra hau jya issu hai 
+
+
+
+
+
+
+
+
+
+
+
