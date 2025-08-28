@@ -195,9 +195,32 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 # Tech Stack: React, Context API, useReducer, React Router, JavaScript, CSS
 
 
-# ha bana de lekin practical expriemce section nhi sahi fresjer ke liyue interviewer bbi cofisue hoga kkya hai yaja or porject me kya haio muje brest sultion nikal ke de ji se 83 ho score aye or ats keyword se resume stromng ho aisa 
 
-     
+# StoreFusion -Digital
+# Built product pages, secure authentication, and payment/order processing
+# Developed admin panel for CRUD operations on products
+# Enhanced app performance and ensured responsive design
+# Tech Stack: React, Redux, Firebase, Tailwind CSS, Material-UI
+# 
+# 
+
+
+
+# Udmy clon 
+#  Built course pages with category filters, detail view, and cart features
+#  Developed interactive course detail pages with dynamic content
+#  Integrated React Router for smooth page navigation
+# 
+# Tech Stack React, Context API, useReducer, React Router, JavaScript, CSS
+
+
+
+# Rodan Feild
+#  Built product pages, cart pages, and checkout pages to deliver a complete online shopping experience
+# Created interactive product slider showcasing products for smooth user browsing experience
+# Stored and tracked user actions in LocalStorage for enhanced interactivity
+# Tech Stack HTML, CSS, JavaScript, LocalStorage, DOM
+
 
 
 
@@ -210,89 +233,15 @@ Communication, Team Collaboration, Adaptability, Time Management, Attention to D
 # Tausif_Qureshi_Frontend_Developer_Resume.pdf
 
 
-# Other Skills: UI Design, Performance Testing, Agile Development, Project Management, Coding Standards, Information
-# Technology
+
+# retify above project fort ats friendly resume ----> Ats content chnage commant. 
+
+# what will be te section for ats resume fresher front end developer ----> Section add karna hai ya nhu command. 
+# go i need the Practical Experience in the resume ---> section add karna hai ya nhi yaha puchna wala command.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Problem issu
-# dding this job's company name and web address can help us provide you ATS-specific tips.
-# Update scan information
-# Contact Information
-# We did not find an address in your resume. Recruiters use your address to validate your location for job matches.
-# You provided your email. Recruiters use your email to contact you for job matches.
-# You provided your phone number.
-# Summary
-# We found a summary section on your resume. Good job! The summary provides a quick overview of the candidate's qualifications, helping recruiters and hiring managers promptly grasp the value the candidate can offer in the position.
-# Section Headings
-# We found the education section in your resume.
-# We found the work experience section in your resume.
-# Your Work Experience section appears empty. We recommend that this section should showcase at least one listing, even if it is just an internship or a personal project.
-# Job Title Match
-# The job title 'React.js Developer' from the job description matches your resume's profile job title. We recommend this to be the case to ensure you're found when recruiters search by job title.
-# Update scan information
-# Date Formatting
-# ATS and recruiters prefer specific date formatting for your work experience. Please use the following formats: “MM/YY or MM/YYYY or Month YYYY” (e.g. 03/19, 03/2019, Mar 2019 or March 2019).
-# Education Match
-# Your education matches the preferred (Bachelor) education listed in the job description.
-# Update required education level
-# File Type
-# You are using a .pdf resume, which is the preferred format for most ATS systems.
-# Your file name doesn't contain special characters that could cause an error in ATS.
-# Your file name is concise and readable.
-
-
-# Skill 
-# Resume
-# Job Description
-# javascript
-# 3
-# 3
-# coding
-# 1
-# 3
-# performance testing
-# 2
-# Debugging
-# 3
-# 2
-# webpack
-# 3
-# 2
-# redux
-# 6
-# 2
-# project management skills
-# 1
-# information technology
-# 1
-# Front-end development
-# 1
-# user interface design
-# 1
-# muje na jibscne yaha bata ra hau jya issu hai 
-
-
-
-
-
-
-
+# https://drive.google.com/file/d/1_l3vwNVBIu5agtxDaFAPE0cT_wgg-SsY/view?usp=sharing
 
 
 

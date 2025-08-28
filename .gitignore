@@ -11,12 +11,14 @@ node_modules
 dist
 dist-ssr
 *.local   
+text.pyt
+Dyami.pyt
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
+.DS_Storej
 *.suo
 *.ntvs*
 *.njsproj
