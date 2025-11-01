@@ -279,6 +279,15 @@ export default function Layout() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+   // ✅ Auto-close sidebar when resizing to desktop
+  useEffect(() => {
+    if (windowWidth >= 768) {
+      setMobileSidebarOpen(false);
+      setMobileDropdownOpen(false);
+    }
+  }, [windowWidth]);
+
+
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
