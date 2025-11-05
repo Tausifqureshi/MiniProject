@@ -5,21 +5,27 @@ function  SearchInput() {
   const [toggle, setToggle] =useState(false);
   const [inputValue, setInputValue] =useState("");
   const [showInput, setShowInput] = useState(true); // input dikh raha hai ya nahi
+  const [showValue, setShowValue] = useState(true); // value dikh raha hai ya nahi
 
-  const inputToggle = () => {
+  const inputToggle = (e) => {
     //  Toggle to input 
     
-    // setInputValue((prevValue) => !prevValue);
     // if (inputValue) {
     //   setInputValue("");
     // } else {
     //   setInputValue("Default Value");
     // }
-    setShowInput(!showInput);
+    // setShowInput(!showInput);
+      setShowInput(e.target.checked); 
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowValue(inputValue);
+  }
+
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       {showInput && (
         <input
           type="text"
@@ -36,15 +42,21 @@ function  SearchInput() {
      
        <br /> <br /> <br />
 
+       <h1>{showValue? showValue :"Nothing submitted yet"}</h1>
+
       <label htmlFor=""> Toggle to input </label>
       <input type="checkbox" name="" id="" checked={showInput} onChange={inputToggle}/>
+      <br/>  <br/>
 
       <button type="button" onClick={() => setToggle(!toggle)}>
         Click to text toggle 
       </button>
       
       {toggle ? <p>Toggle is ON</p> : <p>Toggle is OFF</p>}
-    </>
+
+    <br/>  <br/>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 

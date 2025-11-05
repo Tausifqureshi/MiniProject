@@ -1,11 +1,14 @@
 import { version } from "react";
 import RouterEax from './routerExample/RouterEax'
+import SearchInput from "./SearchInput/SearchInput";
 
 function App() {
 
   return (
     <>
-      <RouterEax />
+      {/* <RouterEax /> */}
+      <SearchInput/>
+
       {/* <h1 className="text-3xl font-bold text-red-900 bg-yellow-300 p-5 ">
         App {version}
       </h1> */}
