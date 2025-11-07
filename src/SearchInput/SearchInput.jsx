@@ -10,6 +10,7 @@ function  SearchInput() {
   const inputToggle = (e) => {
     //  Toggle to input 
     
+
     // if (inputValue) {
     //   setInputValue("");
     // } else {
