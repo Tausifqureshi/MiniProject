@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth } from "../contexAPI/AuthProvider ";
 function Dashboard() {
-  // const { login, user } = useAuth();
    const { login, user } = useAuth();
 
   return (

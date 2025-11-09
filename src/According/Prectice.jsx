@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-export default function According() {
+function Prectice() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  // sab data yahi define kiya hai (no props)
   const accordionData = [
     {
       id: 1,
@@ -22,27 +21,27 @@ export default function According() {
     },
   ];
 
-  // toggle function
-  const handleToggle = (index) => {
-    setOpenIndex(openIndex !== index ? index : null);
-  };
-
+  function toggleIndex(index) {
+    if (openIndex !== index) {
+      setOpenIndex(index);
+    } else {
+      setOpenIndex(null);
+    }
+  }
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-5">
+    <div className="min-h-screen bg-gray-100 py-2 px-10">
       <h2 className="text-2xl font-bold text-center mb-8">
         ⚡ React Accordion (Single Component)
       </h2>
-
       <div className="max-w-3xl mx-auto space-y-4">
         {accordionData.map((item, index) => (
           <div
             key={item.id}
             className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300"
           >
-            {/* Header */}
             <button
-              onClick={() => handleToggle(index)}
-              className="w-full flex justify-between items-center px-5 py-4 text-left"
+              onClick={() => toggleIndex(index)}
+              className="w-full flex justify-between items-center px-5 py-4 text-lef"
             >
               <h3 className="text-lg font-semibold text-gray-800">
                 {item.title}
@@ -58,19 +57,39 @@ export default function According() {
               </span>
             </button>
 
-            {/* Body */}
-            <div
+             <div
               className={`transition-all duration-500 ease-in-out ${
                 openIndex === index
                   ? "max-h-60 px-5 pb-4 opacity-100"
                   : "max-h-0 opacity-0"
               } overflow-hidden`}
-            >
-              <p className="text-gray-600">{item.text}</p>
+            > 
+
+            <p className="text-gray-600"> {item.text}</p>
             </div>
+
           </div>
         ))}
       </div>
     </div>
   );
 }
+
+export default Prectice;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
