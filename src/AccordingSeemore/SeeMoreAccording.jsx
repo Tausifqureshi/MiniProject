@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
 
-export default function SeeMoreAccording() {
+export default function SeeMoreAccordion() {
   // Accordion data
   const data = [
     {
@@ -21,26 +20,40 @@ export default function SeeMoreAccording() {
     },
   ];
 
-  // State: kaunsa accordion open hai
-  const [openIndex, setOpenIndex] = useState({});
-  // State: kaunsa card text expanded hai
-  const [expanded, setExpanded] = useState({});
+  // ✅ State: Accordion open/close ke liye (multiple open allowed)
+  const [accordionOpen, setAccordionOpen] = useState({});
 
-  // const toggleAccordion = (index) => { //Single According open karne ke liye.
-  //   setOpenIndex(openIndex === index ? null : index);
+  // ✅ State: See More / See Less ke liye
+  const [seeMoreExpanded, setSeeMoreExpanded] = useState({});
+
+  //   const toggleAccordions = (index) => { //Single According open karne ke liye.
+  //   setAccordionOpen(accordionOpen === index ? null : index);
   // };
 
+  // ✅ Multiple accordion toggle
+  const toggleAccordion = (index) => {
+    // setAccordionOpen((prev) => ({
+    //   ...prev,
+    //   [index]: !prev[index], // agar open hai → close, warna open
+    // }));
 
-// Multiple According open karne ke liye.
-const toggleAccordion = (index) => {
-  setOpenIndex((prev) => ({
-    ...prev,
-    [index]: !prev[index], // agar already open → close, nahi → open
-  }));
-};
+    setAccordionOpen((accordionOpen) => ({
+      ...accordionOpen,
+      [index]: !accordionOpen[index],// agar true tha to false kar do, agar false tha to true kar do
+    }));
+  };
 
-  const toggleExpand = (index) => {
-    setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
+  // ✅ See More / See Less toggle
+  const toggleSeeMore = (index) => {
+    // setSeeMoreExpanded((prev) => ({
+    //   ...prev,
+    //   [index]: !prev[index],
+    // }));
+
+    setSeeMoreExpanded((seeMoreExpanded) => ({
+      ...seeMoreExpanded,
+      [index]: !seeMoreExpanded[index], // agar true tha to false kar do, agar false tha to true kar do
+    }));
   };
 
   return (
@@ -51,11 +64,15 @@ const toggleAccordion = (index) => {
 
       <div className="max-w-3xl mx-auto space-y-4">
         {data.map((item, index) => {
-          // const isOpen = openIndex === index; //Single according open karne ke liye aisa 
-          const isOpen = openIndex[index];
-          const isExpanded = expanded[index] || false;
+          // const isOpen = openIndex === index; //Single according open karne ke liye aisa.
+          const isOpen = accordionOpen[index] || false; // Multiple accordion open karne ke liye
+          const isExpanded = seeMoreExpanded[index] || false;// Multiple see more expanded karne ke liye
+
+          // Short text for See More feature
           const shortText =
-            item.text.length > 100 ? item.text.slice(0, 100) + "..." : item.text;
+            item.text.length > 100
+              ? item.text.slice(0, 100) + "..."
+              : item.text;
 
           return (
             <div
@@ -67,10 +84,14 @@ const toggleAccordion = (index) => {
                 onClick={() => toggleAccordion(index)}
                 className="w-full flex justify-between items-center px-5 py-4 text-left focus:outline-none focus-visible:ring focus-visible:ring-blue-300"
               >
-                <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {item.title}
+                </h3>
                 <span
                   className={`transform transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-blue-600" : "rotate-0 text-gray-500"
+                    isOpen
+                      ? "rotate-180 text-blue-600"
+                      : "rotate-0 text-gray-500"
                   }`}
                 >
                   ▼
@@ -84,10 +105,10 @@ const toggleAccordion = (index) => {
                     {isExpanded ? item.text : shortText}
                   </p>
 
-                  {/* See More / See Less button */}
+                  {/* See More / See Less Button */}
                   {item.text.length > 100 && (
                     <button
-                      onClick={() => toggleExpand(index)}
+                      onClick={() => toggleSeeMore(index)}
                       className="mt-2 text-blue-600 font-semibold hover:underline"
                     >
                       {isExpanded ? "See Less" : "See More"}
