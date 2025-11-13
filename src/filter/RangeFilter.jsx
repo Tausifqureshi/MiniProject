@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-// Sample products with price
+// 🧺 Static product data
 const productsData = [
   { id: 1, name: "Apple", category: "Fruit", price: 50 },
   { id: 2, name: "Banana", category: "Fruit", price: 30 },
@@ -10,23 +10,23 @@ const productsData = [
   { id: 6, name: "Fish", category: "Meat", price: 120 },
 ];
 
-function RangeFilterTailwind() {
-  const [products, setProducts] = useState(productsData);
-  const [filteredProducts, setFilteredProducts] = useState(productsData);
-
-  // Range state
-  const prices = products.map((p) => p.price);
+function RangeFilter() {
+  // 🎚️ Range setup (min & max from data)
+  const prices = productsData.map((p) => p.price);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
 
   const [range, setRange] = useState([minPrice, maxPrice]);
+  const [filteredProducts, setFilteredProducts] = useState(productsData);
 
-  // Update filtered products when range changes
+  // 🎯 Filter products by price range
   useEffect(() => {
     const [min, max] = range;
-    const filtered = products.filter((p) => p.price >= min && p.price <= max);
+    const filtered = productsData.filter(
+      (p) => p.price >= min && p.price <= max
+    );
     setFilteredProducts(filtered);
-  }, [range, products]);
+  }, [range]);
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
@@ -75,7 +75,9 @@ function RangeFilterTailwind() {
                 key={p.id}
                 className="p-3 border rounded-md flex justify-between bg-white shadow-sm"
               >
-                <span>{p.name} - {p.category}</span>
+                <span>
+                  {p.name} - {p.category}
+                </span>
                 <span className="font-semibold">${p.price}</span>
               </li>
             ))}
@@ -86,4 +88,4 @@ function RangeFilterTailwind() {
   );
 }
 
-export default RangeFilterTailwind;
+export default RangeFilter;

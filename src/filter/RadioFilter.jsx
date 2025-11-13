@@ -14,10 +14,10 @@ function RadioFilter() {
 
   useEffect(() => {
     if (selectedRadio === "All") {
-      setFilteredProducts(productsRadio);
+      setFilteredProducts(productsRadio); // Show all products
     } else {
       setFilteredProducts(
-        productsRadio.filter((p) => p.category === selectedRadio)
+        productsRadio.filter((p) => p.category === selectedRadio) // Filter by selected category
       );
     }
   }, [selectedRadio]);
