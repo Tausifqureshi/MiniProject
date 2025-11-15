@@ -36,71 +36,77 @@ function AllFilterWith() {
   };
 
   // Combined filtering logic
-  useEffect(() => {
-    let result = [...productsData];
+  // useEffect(() => {
+  //   let result = [...productsData];
 
-    // Search filter
-    // if (searchTerm.trim() !== "") {
-    //   result = result.filter((p) =>
-    //     p.name.toLowerCase().includes(searchTerm.toLowerCase())
-    //   );
-    // }
+  //   // Search filter
+  //   // if (searchTerm.trim() !== "") {
+  //   //   result = result.filter((p) =>
+  //   //     p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  //   //   );
+  //   // }
 
-    // 🔹 Right side wala `result` →
-    //    ye current array hai (jisme abhi tak ka data hai)
-    //    is par filter() lagake ek naya filtered array return hota hai
-    //
-    // 🔹 Left side wala `result` →
-    // Ye variable assignment ke liye hai. Matlab, “jo naya filtered array mila hai, use result me save kar do.
+  //   // 🔹 Right side wala `result` →
+  //   //    ye current array hai (jisme abhi tak ka data hai)
+  //   //    is par filter() lagake ek naya filtered array return hota hai
+  //   //
+  //   // 🔹 Left side wala `result` →
+  //   // Ye variable assignment ke liye hai. Matlab, “jo naya filtered array mila hai, use result me save kar do.
 
-    if (searchTerm.trim() === "") {
-      // empty search → show all (result remains all productsData)
-    } else {
-      // non-empty search → filter by name
-      result = result.filter((p) =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
+  //   if (searchTerm.trim() === "") {
+  //     // empty search → show all (result remains all productsData)
+  //   } else {
+  //     // non-empty search → filter by name
+  //     result = result.filter((p) =>
+  //       p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  //     );
+  //   }
 
-    // Checkbox category filter
-    if (selectedCategories.length > 0) {
-      result = result.filter((p) => selectedCategories.includes(p.category));
-    }
+  //   // Checkbox category filter
+  //   if (selectedCategories.length > 0) {
+  //     result = result.filter((p) => selectedCategories.includes(p.category));
+  //   }
 
-    // Radio category filter
-    if (selectedRadio !== "All") {
-      result = result.filter((p) => p.category === selectedRadio);
-    }
+  //   // Radio category filter
+  //   if (selectedRadio !== "All") {
+  //     result = result.filter((p) => p.category === selectedRadio);
+  //   }
 
-    // Range filter
-    result = result.filter((p) => p.price >= range[0] && p.price <= range[1]);
+  //   // Range filter
+  //   result = result.filter((p) => p.price >= range[0] && p.price <= range[1]);
 
-    // Sorting
-    if (sortOrder === "lowToHigh") {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortOrder === "highToLow") {
-      result.sort((a, b) => b.price - a.price);
-    }
+  //   // Sorting
+  //   if (sortOrder === "lowToHigh") {
+  //     result.sort((a, b) => a.price - b.price);
+  //   } else if (sortOrder === "highToLow") {
+  //     result.sort((a, b) => b.price - a.price);
+  //   }
 
-    setFilteredProducts(result);
-  }, [searchTerm, selectedCategories, selectedRadio, range, sortOrder]);
-
-  //sort filter logic
-  //   useEffect(() => {
-  //   setFilteredProducts(
-  //     productsData
-  // .filter((p) => searchTerm.trim() === "" || p.name.toLowerCase().includes(searchTerm.toLowerCase()))
-
-  // .filter((p) => selectedCategories.length === 0 || selectedCategories.includes(p.category))
-
-  // .filter((p) => selectedRadio === "All" || p.category === selectedRadio)
-
-  // .filter((p) => p.price >= range[0] && p.price <= range[1])
-
-  // .sort((a, b) => sortOrder === "lowToHigh" ? a.price - b.price : sortOrder === "highToLow" ? b.price - a.price : 0)
-  //   );
+  //   setFilteredProducts(result);
   // }, [searchTerm, selectedCategories, selectedRadio, range, sortOrder]);
 
+  useEffect(()=>{
+    const filtered = productsData
+    // Search filter logic
+    .filter((p)=> searchTerm.trim() === "" || p.name.toLowerCase().includes(searchTerm.toLowerCase()))
+
+    // Checkbox filter logic
+    .filter((p)=> selectedCategories.length === 0 || selectedCategories.includes(p.category))
+
+    // Radio filter logic
+    .filter((p)=> selectedRadio === "All" || p.category === selectedRadio)
+
+    // Range filter logic
+    .filter((p)=> p.price >= range[0] && p.price <= range[1])
+
+    // Sort filter logic
+    .sort((a, b)=> sortOrder === "lowToHigh" ? a.price - b.price : sortOrder === "highToLow" ? b.price - a.price : 0);
+
+
+    setFilteredProducts(filtered);
+  }, [searchTerm, selectedCategories, selectedRadio, range, sortOrder]);
+
+ 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-gray-50 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-center">

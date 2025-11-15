@@ -7,6 +7,7 @@ import SeeMoreAccording from "./AccordingSeemore/SeeMoreAccording";
 import SeeText from "./AccordingSeemore/SeeText";
 import HoveringDrop from "./Dropdown/HoveringDrop"
 import Dropdown from "./Dropdown/Dropdown";
+import DropdownSelection from "./Dropdown/DropdownSelection";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       {/* <RouterEax /> */}
 
       <Dropdown />
+      {/* <DropdownSelection /> */}
       {/* <HoveringDrop /> */}
 
       {/* <SearchInput/> */}

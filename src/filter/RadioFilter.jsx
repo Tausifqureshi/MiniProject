@@ -12,12 +12,17 @@ function RadioFilter() {
   const [selectedRadio, setSelectedRadio] = useState("All");
   const [filteredProducts, setFilteredProducts] = useState(productsRadio);
 
+  // 🔵 Ye function upar rakha
+  const handleRadioChange = (e) => {
+    setSelectedRadio(e.target.value); // sirf yahi chalega
+  };
+
   useEffect(() => {
     if (selectedRadio === "All") {
-      setFilteredProducts(productsRadio); // Show all products
+      setFilteredProducts(productsRadio); // show all products
     } else {
       setFilteredProducts(
-        productsRadio.filter((p) => p.category === selectedRadio) // Filter by selected category
+        productsRadio.filter((p) => p.category === selectedRadio) // filter by selected category
       );
     }
   }, [selectedRadio]);
@@ -33,9 +38,9 @@ function RadioFilter() {
             <input
               type="radio"
               name="radioCategory"
-              value={cat}
+              value={cat}               // 🔵 value yaha hai
               checked={selectedRadio === cat}
-              onChange={() => setSelectedRadio(cat)}
+              onChange={handleRadioChange} // 🔵 function call by reference
               className="w-4 h-4 text-blue-600 accent-blue-600"
             />
             <span className="text-gray-700 font-medium">{cat}</span>

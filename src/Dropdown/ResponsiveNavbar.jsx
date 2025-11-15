@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+function ResponsiveNavbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // mobile menu toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      // Hide on scroll down, show on scroll up
       if (window.scrollY > lastScrollY) {
-        // Scroll down → hide navbar
         setIsVisible(false);
       } else {
-        // Scroll up → show navbar
         setIsVisible(true);
       }
 
-      // Navbar background color change after some scroll
+      // Change background after scroll 50px
       setIsScrolled(window.scrollY > 50);
+
       setLastScrollY(window.scrollY);
     };
 
@@ -25,7 +27,14 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const navItems = ["Home", "About", "Services", "Contact", "Login"];
+  // ✔ Paths with links
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Contact", path: "/contact" },
+    { name: "Login", path: "/login" },
+  ];
 
   return (
     <header
@@ -46,22 +55,24 @@ function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8">
           {navItems.map((item) => (
-            <li
-              key={item}
-              className={`cursor-pointer font-medium transition-colors duration-200 ${
-                isScrolled
-                  ? "text-gray-800 hover:text-blue-600"
-                  : "text-white hover:text-blue-400"
-              }`}
-            >
-              {item}
+            <li key={item.name}>
+              <Link
+                to={item.path}
+                className={`cursor-pointer font-medium transition-colors duration-200 ${
+                  isScrolled
+                    ? "text-gray-800 hover:text-blue-600"
+                    : "text-white hover:text-blue-400"
+                }`}
+              >
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Mobile Menu Button (Icon) */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl focus:outline-none"
+          className="md:hidden text-2xl"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -72,7 +83,7 @@ function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Dropdown */}
       {isMenuOpen && (
         <div
           className={`md:hidden transition-all duration-300 ${
@@ -81,15 +92,18 @@ function Navbar() {
         >
           <ul className="flex flex-col items-center py-4 space-y-3">
             {navItems.map((item) => (
-              <li
-                key={item}
-                className={`cursor-pointer font-medium ${
-                  isScrolled
-                    ? "text-gray-800 hover:text-blue-600"
-                    : "text-white hover:text-blue-400"
-                }`}
-              >
-                {item}
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)} // click close menu
+                  className={`cursor-pointer font-medium ${
+                    isScrolled
+                      ? "text-gray-800 hover:text-blue-600"
+                      : "text-white hover:text-blue-400"
+                  }`}
+                >
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>

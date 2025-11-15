@@ -3,7 +3,6 @@ import React, { useState } from "react";
 export default function According() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  // sab data yahi define kiya hai (no props)
   const accordionData = [
     {
       id: 1,
@@ -22,7 +21,6 @@ export default function According() {
     },
   ];
 
-  // toggle function
   const handleToggle = (index) => {
     setOpenIndex(openIndex !== index ? index : null);
   };
@@ -34,42 +32,42 @@ export default function According() {
       </h2>
 
       <div className="max-w-3xl mx-auto space-y-4">
-        {accordionData.map((item, index) => (
-          <div
-            key={item.id}
-            className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300"
-          >
-            {/* Header */}
-            <button
-              onClick={() => handleToggle(index)}
-              className="w-full flex justify-between items-center px-5 py-4 text-left"
-            >
-              <h3 className="text-lg font-semibold text-gray-800">
-                {item.title}
-              </h3>
-              <span
-                className={`transform transition-transform duration-300 ${
-                  openIndex === index
-                    ? "rotate-180 text-blue-600"
-                    : "rotate-0 text-gray-500"
-                }`}
-              >
-                ▼
-              </span>
-            </button>
+        {accordionData.map((item, index) => {
+          const isOpen = openIndex === index; // Single accordion open check
 
-            {/* Body */}
+          return (
             <div
-              className={`transition-all duration-500 ease-in-out ${
-                openIndex === index
-                  ? "max-h-60 px-5 pb-4 opacity-100"
-                  : "max-h-0 opacity-0"
-              } overflow-hidden`}
+              key={item.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300"
             >
-              <p className="text-gray-600">{item.text}</p>
+              {/* Header */}
+              <button
+                onClick={() => handleToggle(index)}
+                className="w-full flex justify-between items-center px-5 py-4 text-left"
+              >
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {item.title}
+                </h3>
+                <span
+                  className={`transform transition-transform duration-300 ${
+                    isOpen ? "rotate-180 text-blue-600" : "rotate-0 text-gray-500"
+                  }`}
+                >
+                  ▼
+                </span>
+              </button>
+
+              {/* Body */}
+              <div
+                className={`transition-all duration-500 ease-in-out ${
+                  isOpen ? "max-h-60 px-5 pb-4 opacity-100" : "max-h-0 opacity-0"
+                } overflow-hidden`}
+              >
+                <p className="text-gray-600">{item.text}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

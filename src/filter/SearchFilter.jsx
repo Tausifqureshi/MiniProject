@@ -11,22 +11,28 @@ const productsData = [
 ];
 
 function SearchFilter() {
-  const [products, setProducts] = useState(productsData);
   const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter products whenever searchTerm changes
+  // 🔵 search handler (yaha e.target.value ka kaam hoga)
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // filtering logic
   useEffect(() => {
     if (searchTerm.trim() === "") {
-      setFilteredProducts(products); // show all if search is empty
+      setFilteredProducts(productsData); // show all
     } else {
-      const lowerSearch = searchTerm.toLowerCase();
-      const filtered = products.filter((p) =>
-        p.name.toLowerCase().includes(lowerSearch)
+      const lower = searchTerm.toLowerCase();
+
+      const filtered = productsData.filter((p) =>
+        p.name.toLowerCase().includes(lower)
       );
+
       setFilteredProducts(filtered);
     }
-  }, [searchTerm, products]);
+  }, [searchTerm]);
 
   return (
     <div style={{ padding: 20 }}>
@@ -37,7 +43,7 @@ function SearchFilter() {
         type="text"
         placeholder="Search products..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleSearch}   // 🔥 Only function name
         style={{ padding: "5px 10px", width: 250, marginBottom: 20 }}
       />
 

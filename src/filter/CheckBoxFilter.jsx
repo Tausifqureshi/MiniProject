@@ -16,7 +16,7 @@ function CheckboxFilter() {
     const categories = [...new Set(productsData.map(p => p.category))]; // Unique categories
     
   const handleChange = (cat) => {
-
+ 
     selectedCategories.includes(cat)
       ? setSelectedCategories(selectedCategories.filter((c) => c !== cat)) // remove and uncheck
       : setSelectedCategories([...selectedCategories, cat]); // add and check
