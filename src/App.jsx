@@ -8,6 +8,7 @@ import SeeText from "./AccordingSeemore/SeeText";
 import HoveringDrop from "./Dropdown/HoveringDrop"
 import Dropdown from "./Dropdown/Dropdown";
 import DropdownSelection from "./Dropdown/DropdownSelection";
+import RenderAllFile from "./StockProdct/RnderAllFile";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
       <h1>Mini Project </h1>
       {/* <RouterEax /> */}
 
-      <Dropdown />
+      <RenderAllFile />
+
+      {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
       {/* <HoveringDrop /> */}
 

@@ -140,7 +140,7 @@ function AllFilterWith() {
       {/* Radio Categories */}
       <div className="flex gap-4 mb-4 flex-wrap">
         {["All", ...categories].map((cat) => (
-          <label key={cat} className="flex items-center space-x-2">
+          <label key={cat} className="flex items-center space-x-2"> 
             <input
               type="radio"
               name="radioCategory"

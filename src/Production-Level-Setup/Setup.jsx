@@ -8,12 +8,12 @@ const API = axios.create({
   baseURL: "https://your-backend-api.com/api", // 🔁 Change to your actual backend URL
 });
 
-// Attach token automatically
+// Attach token automatically .Interceptor har API ke sath automatically token laga deta hai, aur jab hum loginUser API call karte hain to backend response me token bhej deta hai.
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-  }
+  } //Header ke andar Authorization naam ka field add kar deti hai. Usme token daal deti hai
   return config;
 });
 
@@ -73,14 +73,14 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     const { data } = await loginUser(credentials);
-    localStorage.setItem("token", data.token);
-    await loadUser(); // fetch user after login
+    localStorage.setItem("token", data.token); 
+    await loadUser();//Login me hum sirf token localStorage me save karte hain, lekin React ko pata nahi hota ke user kaun hai. Is liye login ke baad loadUser() call karte hain taaki backend se user {data} lekar React ko bata sake aur UI render ho jaye.”
   };
 
   const register = async (formData) => {
     const { data } = await registerUser(formData);
-    localStorage.setItem("token", data.token);
-    await loadUser();
+    localStorage.setItem("token", data.token);// ← AUTOMATIC LOGIN PART 1 (token save)
+    await loadUser(); // AUTOMATIC LOGIN PART 2 (load user data)
   };
 
   const logout = () => {
@@ -195,60 +195,3 @@ export function AppRoutes() {
 
 
 
-
-
-// Category filter uswr button clcik
-// import React, { useState } from "react";
-
-// const categories = ["All", "Web App", "Dashboard", "Productivity", "Portfolio"];
-
-// const projects = [
-//   { id: 1, title: "Project A", category: "Web App" },
-//   { id: 2, title: "Project B", category: "Dashboard" },
-//   { id: 3, title: "Project C", category: "Productivity" },
-//   { id: 4, title: "Project D", category: "Portfolio" },
-//   { id: 5, title: "Project E", category: "Web App" },
-// ];
-
-// export default function ProjectFilter() {
-//   const [activeCategory, setActiveCategory] = useState("All");
-
-//   const filteredProjects =
-//     activeCategory === "All"
-//       ? projects
-//       : projects.filter((project) => project.category === activeCategory);
-
-//   return (
-//     <div className="p-6">
-//       {/* Category Buttons */}
-//       <div className="flex gap-3 mb-6">
-//         {categories.map((cat) => (
-//           <button
-//             key={cat}
-//             onClick={() => setActiveCategory(cat)}
-//             className={`px-4 py-2 rounded-lg border transition ${
-//               activeCategory === cat
-//                 ? "bg-blue-600 text-white"
-//                 : "bg-gray-100 hover:bg-gray-200"
-//             }`}
-//           >
-//             {cat}
-//           </button>
-//         ))}
-//       </div>
-
-//       {/* Project List */}
-//       <div className="grid grid-cols-2 gap-4">
-//         {filteredProjects.map((project) => (
-//           <div
-//             key={project.id}
-//             className="border p-4 rounded-lg shadow-sm bg-white"
-//           >
-//             <h3 className="font-semibold">{project.title}</h3>
-//             <p className="text-sm text-gray-500">{project.category}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
