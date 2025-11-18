@@ -32,12 +32,14 @@ const Cart = () => {
                   -
                 </button>
                 <span>{item.qty}</span>
+                
                 <button
                   onClick={() => increaseQty(item.id)}
                   className="bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
                 >
                   +
                 </button>
+
                 <button
                   onClick={() => removeFromCart(item.id)}
                   className="text-red-500 px-2 py-1 rounded hover:bg-red-100"

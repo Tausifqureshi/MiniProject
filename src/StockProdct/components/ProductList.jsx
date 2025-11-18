@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 
@@ -16,8 +15,8 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch("https://dummyjson.com/products")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setProducts(data.products);
         setFilteredProducts(data.products);
       });
@@ -26,10 +25,9 @@ const ProductList = () => {
   const categories = [...new Set(products.map((p) => p.category))];
 
   const handleCheckboxChange = (cat) => {
-    const updated =
-      selectedCategories.includes(cat)
-        ? selectedCategories.filter((c) => c !== cat)
-        : [...selectedCategories, cat];
+    const updated = selectedCategories.includes(cat)
+      ? selectedCategories.filter((c) => c !== cat)
+      : [...selectedCategories, cat];
 
     setSelectedCategories(updated);
   };
@@ -173,6 +171,8 @@ const ProductList = () => {
         {filteredProducts.map((product) => {
           const cartItem = cart.find((item) => item.id === product.id);
           const qty = cartItem ? cartItem.qty : 0;
+          // Agar cartItem mila → uski quantity show karo
+          // Agar cartItem nahi mila → quantity = 0
 
           return (
             <div key={product.id} className="border rounded p-4 shadow">
