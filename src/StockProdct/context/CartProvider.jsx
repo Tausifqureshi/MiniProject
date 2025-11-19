@@ -30,7 +30,7 @@ export const CartContext = createContext();
 
   const increaseQty = (id) => {
     const updatedCart = cart.map(item =>
-      item.id === id ? { ...item, qty: item.qty + 1 } : item
+      item.id === id ? { ...item, qty: item.qty + 1 } : item 
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
