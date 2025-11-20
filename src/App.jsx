@@ -5,6 +5,8 @@ import According from "./According/According";
 import Prectice from "./According/Prectice";
 import SeeMoreAccording from "./AccordingSeemore/SeeMoreAccording";
 import SeeText from "./AccordingSeemore/SeeText";
+import SinglSeeMore from "./AccordingSeemore/SingleSeeMore"
+import SeeMoreCard from "./AccordingSeemore/SeeMoreCard"
 import HoveringDrop from "./Dropdown/HoveringDrop"
 import Dropdown from "./Dropdown/Dropdown";
 import DropdownSelection from "./Dropdown/DropdownSelection";
@@ -19,7 +21,7 @@ function App() {
       <h1>Mini Project </h1>
       {/* <RouterEax /> */}
 
-      <RenderAllFile />
+      {/* <RenderAllFile /> */}
 
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
@@ -31,6 +33,8 @@ function App() {
 
       {/* <SeeMoreAccording /> */}
       {/* <SeeText/> */}
+      {/* <SinglSeeMore /> */}
+      <SeeMoreCard/>
       {/* <Prectice /> */}
     </>
   );
