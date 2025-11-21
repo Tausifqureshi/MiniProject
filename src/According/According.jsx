@@ -20,7 +20,7 @@ export default function According() {
       text: "AI healthcare chatbot patients ke questions answer karta hai aur unhe appointment ya medicine reminder bhi de sakta hai. Ye React + OpenAI API se build hota hai aur advanced NLP features provide karta hai.",
     },
   ];
-
+ 
   const handleToggle = (index) => {
     setOpenIndex(openIndex !== index ? index : null);
   };
