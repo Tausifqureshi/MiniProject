@@ -23,7 +23,7 @@ function App() {
 
       {/* <RenderAllFile /> */}
 
-      <Paginations />
+      {/* <Paginations /> */}
 
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
@@ -34,7 +34,7 @@ function App() {
       {/* <According/> */}
 
       {/* <SeeMoreAccording /> */}
-      {/* <SeeText/> */}
+      <SeeText/>
       {/* <SinglSeeMore /> */}
       {/* <SeeMoreCard/> */}
       {/* <Prectice /> */}
