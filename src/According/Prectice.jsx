@@ -76,20 +76,3 @@ function Prectice() {
 }
 
 export default Prectice;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
