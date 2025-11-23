@@ -11,7 +11,7 @@ import HoveringDrop from "./Dropdown/HoveringDrop"
 import Dropdown from "./Dropdown/Dropdown";
 import DropdownSelection from "./Dropdown/DropdownSelection";
 import RenderAllFile from "./StockProdct/RnderAllFile";
-
+import Paginations from "./Pagination/Paginations";
 function App() {
   return (
     <>
@@ -21,7 +21,9 @@ function App() {
       <h1>Mini Project </h1>
       {/* <RouterEax /> */}
 
-      <RenderAllFile />
+      {/* <RenderAllFile /> */}
+
+      <Paginations />
 
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
