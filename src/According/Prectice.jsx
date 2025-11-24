@@ -73,6 +73,6 @@ function Prectice() {
       </div>
     </div>
   );
-}
+} 
 
 export default Prectice;
