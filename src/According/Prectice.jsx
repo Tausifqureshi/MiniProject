@@ -29,7 +29,7 @@ function Prectice() {
     }
   }
   return (
-    <div className="min-h-screen bg-gray-100 py-2 px-10">
+    <div className="min-h-screen bg-gray-100 py-2 px-10"> 
       <h2 className="text-2xl font-bold text-center mb-8">
         ⚡ React Accordion (Single Component)
       </h2>
