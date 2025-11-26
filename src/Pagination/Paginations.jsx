@@ -16,7 +16,7 @@ function Paginations() {
     }
     fetchUserData();
   },[])
-  
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -31,13 +31,7 @@ function Paginations() {
         Pagination Component
       </h1>
       <p className="mt-5 text-lg font-serif">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad soluta
-        labore mollitia reiciendis? Accusantium eligendi voluptate hic
-        obcaecati! Expedita, optio odit nihil vero repellendus enim ducimus ipsa
-        at cupiditate esse modi delectus earum architecto, rem pariatur, aliquam
-        necessitatibus velit tempora facere dolorem a. Obcaecati delectus sunt a
-        sint enim magni, sed quod doloribus esse, cumque animi vel amet non
-        accusantium
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
     </div>
   );
