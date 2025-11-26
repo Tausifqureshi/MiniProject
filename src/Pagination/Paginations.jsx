@@ -8,7 +8,8 @@ function Paginations() {
     async function fetchUserData() {
       try {
         setLoading(true);
-        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        const response = await fetch("https://dummyjson.com/users");
+        console.log(response);
         if (!response.ok) { 
           throw new Error(`"Network response was not ok" ${response.statusText}`);
         }
