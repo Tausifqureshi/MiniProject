@@ -12,7 +12,7 @@ function Paginations() {
         console.log(response);
         if (!response.ok) { 
           throw new Error(`"Network response was not ok" ${response.statusText}`);
-        }
+        }  
         const data = await response.json();
         setUserData(data);
         setLoading(false);
@@ -29,6 +29,7 @@ function Paginations() {
   if (loading) {
     return <div className="text-center p-5 text-2xl font-semibold">Loading...</div>;
   }
+  
   if (error) {
     return <div className="text-center p-5 text-red-600 text-2xl font-semibold">Error: {error}</div>;
   }
