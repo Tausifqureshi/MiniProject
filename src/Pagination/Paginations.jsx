@@ -80,4 +80,4 @@ return (
 
 }
 
-export default Paginations;
+export default Paginations; 
