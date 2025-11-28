@@ -16,7 +16,7 @@ function OutOfStock() {
     } else {
       setMessage("Out of Stock");
     }
-  };
+  }; 
 
   return (
     <div style={{ padding: "20px", border: "1px solid gray", width: "200px" }}>
