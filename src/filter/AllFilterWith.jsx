@@ -33,7 +33,7 @@ function AllFilterWith() {
       ? selectedCategories.filter((c) => c !== cat)
       : [...selectedCategories, cat];
     setSelectedCategories(filterProduct);
-  };
+  }; 
 
   // Combined filtering logic
   // useEffect(() => {
