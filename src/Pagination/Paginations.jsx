@@ -1,31 +1,52 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Paginations() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        setLoading(true);
-        const response = await fetch("https://dummyjson.com/users");
-        console.log(response);
-        if (!response.ok) { 
-          throw new Error(`"Network response was not ok" ${response.statusText}`);
-        }  
-        const data = await response.json();
-        console.log(data.users);
-        setUserData(data.users);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError("Failed to fetch user data.");
-      } finally {
-        setLoading(false);
-      }
+  // useEffect(() => {
+  //   async function fetchUserData() {
+  //     try {
+  //       setLoading(true);
+  //       const response = await fetch("https://dummyjson.com/users");
+  //       console.log(response);
+  //       if (!response.ok) { 
+  //         throw new Error(`"Network response was not ok" ${response.statusText}`);
+  //       }  
+  //       const data = await response.json();
+  //       console.log(data.users);
+  //       setUserData(data.users);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setError("Failed to fetch user data.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   fetchUserData();
+  // }, []);
+
+useEffect(() => {
+  async function fetchUserData() {
+    try {
+      setLoading(true);
+      const response = await axios.get("https://dummyjson.com/users");
+      console.log(response);
+      setUserData(response.data.users);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setError("Failed to fetch user data.");
+    } finally {
+      setLoading(false);
     }
-    fetchUserData();
-  }, []);
+  }
+
+  fetchUserData();
+}, []);
+
 
   if (loading) {
     return <div className="text-center p-5 text-2xl font-semibold">Loading...</div>;
