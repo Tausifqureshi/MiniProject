@@ -96,8 +96,12 @@ return (
     </table>
   </div>
 
+    <span className="text-gray-700 text-sm mt-3 block text-center">
+      Page {currentPage} of {totalPages}
+    </span>
   {/* PAGINATION CONTROLS */}
   <div className="flex justify-between items-center mt-4">
+  
     <button
       className={`px-4 py-2 rounded-md ${
         currentPage === 1 //agar current page 1 hai to previous button disable kar dena hai.matlab pehle page pe hain to previous button disable kar dena hai.
@@ -106,14 +110,26 @@ return (
           ? "bg-gray-300 text-gray-600 cursor-not-allowed"
           : "bg-blue-600 text-white hover:bg-blue-700"
       }`}
-      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} //ye ensure kar raha hai ki current page kabhi bhi 1 se kam na ho jaye
       disabled={currentPage === 1}
     >
       Previous
     </button>
-    <span className="text-gray-700">
-      Page {currentPage} of {totalPages}
-    </span>
+    
+    {Array.from({ length: totalPages }, (_, index) => (
+        <button
+          key={index + 1} 
+          className={`mx-1 px-3 py-1 rounded-md ${
+            currentPage === index + 1
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
+          onClick={() => setCurrentPage(index + 1)}
+        >
+          {index + 1}
+        </button>
+      ))}
+  
     <button
       className={`px-4 py-2 rounded-md ${
         currentPage === totalPages //agar current page total pages ke barabar hai to next button disable kar dena. matlab last page pe hai user.

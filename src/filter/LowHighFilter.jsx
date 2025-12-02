@@ -94,7 +94,7 @@ export default LowToHighFilter;
 
 
 
-//  Select and option ke sath use 
+//  Select and option tag ke sath use 
 // import React, { useState, useEffect } from "react";
 
 // const productsData = [
