@@ -34,6 +34,6 @@ function OutOfStock() {
       )}
     </div>
   );
-}
+} 
 
 export default OutOfStock;
