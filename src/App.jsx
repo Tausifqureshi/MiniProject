@@ -23,13 +23,13 @@ function App() {
 
       {/* <RenderAllFile /> */}
 
-      <Paginations />
+      {/* <Paginations /> */}
 
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
       {/* <HoveringDrop /> */}
 
-      {/* <SearchInput/> */}
+      <SearchInput/>
 
       {/* <According/> */}
 
