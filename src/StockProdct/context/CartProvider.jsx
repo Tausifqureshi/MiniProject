@@ -215,20 +215,32 @@ const CartProvider = ({ children }) => {
   };
 
   // 6) CLEAR CART
-  const clearCart = () => {
-    cart.forEach((item) => {
-      setStockProducts((prev) =>
-        prev.map((p) =>
-          p.id === item.id
-            ? { ...p, stock: p.stock + item.qty }
-            : p
-        )
-      );
-    });
+  // const clearCart = () => {
+  //   cart.forEach((item) => {
+  //     setStockProducts((prev) =>
+  //       prev.map((p) =>
+  //         p.id === item.id
+  //           ? { ...p, stock: p.stock + item.qty }
+  //           : p
+  //       )
+  //     );
+  //   });
 
+  //   setCart([]);
+  //   localStorage.setItem("cart", "[]");
+  // };
+
+  const clearCart = () => {
+   setStockProducts((prev) =>
+      prev.map((p) => {
+        const cartItem = cart.find((c) => c.id === p.id);
+        return cartItem ? { ...p, stock: p.stock + cartItem.qty } : p;
+      })
+    );
     setCart([]);
     localStorage.setItem("cart", "[]");
   };
+
 
   // ----------------------------
   return (
