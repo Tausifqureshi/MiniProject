@@ -33,7 +33,7 @@ const Navbar = () => {
   const { cart } = useContext(CartContext);
   const totalQuantity = cart.reduce((acc, item) => acc + item.qty, 0);
 
-  return (
+  return ( 
     <nav className="bg-blue-500 text-white p-4 flex justify-between items-center">
       <Link to="/">
         <h1 className="text-xl font-bold cursor-pointer">🛒 Dummy Store</h1>

@@ -9,11 +9,12 @@ function RnderAllFile() {
   return (
     <CartProvider>
       <BrowserRouter>
-        <Navbar />
+        <Navbar /> 
 
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/cart" element={<Cart />} />
+          
         </Routes>
       </BrowserRouter>
     </CartProvider>
