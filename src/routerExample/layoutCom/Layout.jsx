@@ -415,7 +415,7 @@ export default function Layout() {
           </div>
         </div>
       </header>
-
+ 
       {/* 📱 Mobile Sidebar */}
       {mobileSidebarOpen && (
         <>
