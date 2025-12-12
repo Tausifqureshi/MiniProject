@@ -2,62 +2,47 @@
 // import { CartContext } from "../context/CartProvider";
 
 // const ProductList = () => {
-//   const [products, setProducts] = useState([]);
-//   const { cart, handleAddToCart } = useContext(CartContext);
+//   const { stockProducts, setProductList, cart, handleAddToCart } =
+//     useContext(CartContext);
 
-//   // FILTER STATES
+//   const [filteredProducts, setFilteredProducts] = useState([]);
 //   const [searchTerm, setSearchTerm] = useState("");
 //   const [selectedCategories, setSelectedCategories] = useState([]);
 //   const [selectedRadio, setSelectedRadio] = useState("All");
 //   const [sortOrder, setSortOrder] = useState("none");
 //   const [range, setRange] = useState([0, 2000]);
-//   const [filteredProducts, setFilteredProducts] = useState([]);
 
 //   useEffect(() => {
 //     fetch("https://dummyjson.com/products")
 //       .then((res) => res.json())
 //       .then((data) => {
-//         setProducts(data.products);
-//         console.log(data.products);
+//         setProductList(data.products);
 //         setFilteredProducts(data.products);
 //       });
-//   }, []); 
+//   }, []);
 
-//   const categories = [...new Set(products.map((p) => p.category))];
+//   const categories = [...new Set(stockProducts.map((p) => p.category))];
 
 //   const handleCheckboxChange = (cat) => {
-//     const updated = selectedCategories.includes(cat)
-//       ? selectedCategories.filter((c) => c !== cat)
-//       : [...selectedCategories, cat];
-
-//     setSelectedCategories(updated);
+//     setSelectedCategories((prev) =>
+//       prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+//     );
 //   };
 
-//   // FILTER LOGIC
 //   useEffect(() => {
-//     const filtered = products
-
-//       // Search Filter
+//     const filtered = stockProducts
 //       .filter(
 //         (p) =>
 //           searchTerm.trim() === "" ||
 //           p.title.toLowerCase().includes(searchTerm.toLowerCase())
 //       )
-
-//       // Category Filter
 //       .filter(
 //         (p) =>
 //           selectedCategories.length === 0 ||
 //           selectedCategories.includes(p.category)
 //       )
-
-//       // Radio Filter
 //       .filter((p) => selectedRadio === "All" || p.category === selectedRadio)
-
-//       // Range Filter
 //       .filter((p) => p.price >= range[0] && p.price <= range[1])
-
-//       // High to Low and Low to High
 //       .sort((a, b) =>
 //         sortOrder === "lowToHigh"
 //           ? a.price - b.price
@@ -73,26 +58,28 @@
 //     selectedRadio,
 //     sortOrder,
 //     range,
-//     products,
+//     stockProducts,
 //   ]);
 
 //   return (
 //     <div className="mt-8">
 //       <h2 className="text-2xl font-semibold mb-4">🛍️ Products</h2>
 
-//       {/* Search */}
 //       <input
 //         type="text"
 //         placeholder="Search..."
-//         className="p-2 border rounded w-full mb-4"
 //         value={searchTerm}
 //         onChange={(e) => setSearchTerm(e.target.value)}
+//         className="p-2 border rounded w-full mb-4"
 //       />
 
-//       {/* Checkbox Category */}
+//       {/* -------- CHECKBOX FIXED KEY -------- */}
 //       <div className="flex gap-4 mb-4 flex-wrap">
 //         {categories.map((cat) => (
-//           <label key={cat} className="flex items-center space-x-2">
+//           <label
+//             key={`checkbox-${cat}`}
+//             className="flex items-center space-x-2"
+//           >
 //             <input
 //               type="checkbox"
 //               checked={selectedCategories.includes(cat)}
@@ -103,10 +90,10 @@
 //         ))}
 //       </div>
 
-//       {/* Radio Filter */}
+//       {/* -------- RADIO FIXED KEY -------- */}
 //       <div className="flex gap-4 mb-4 flex-wrap">
 //         {["All", ...categories].map((cat) => (
-//           <label key={cat} className="flex items-center space-x-2">
+//           <label key={`radio-${cat}`} className="flex items-center space-x-2">
 //             <input
 //               type="radio"
 //               name="radio"
@@ -118,12 +105,11 @@
 //         ))}
 //       </div>
 
-//       {/* Range Filter */}
+//       {/* RANGE */}
 //       <div className="mb-4">
 //         <label>
 //           Price Range: ${range[0]} - ${range[1]}
 //         </label>
-
 //         <div className="flex gap-4 items-center">
 //           <input
 //             type="range"
@@ -132,7 +118,6 @@
 //             value={range[0]}
 //             onChange={(e) => setRange([+e.target.value, range[1]])}
 //           />
-
 //           <input
 //             type="range"
 //             min={0}
@@ -143,7 +128,7 @@
 //         </div>
 //       </div>
 
-//       {/* Sort */}
+//       {/* SORT */}
 //       <div className="flex gap-4 mb-6">
 //         <button
 //           onClick={() => setSortOrder("lowToHigh")}
@@ -151,14 +136,12 @@
 //         >
 //           Low to High
 //         </button>
-
 //         <button
 //           onClick={() => setSortOrder("highToLow")}
 //           className="px-3 py-1 bg-gray-200 rounded"
 //         >
 //           High to Low
 //         </button>
-
 //         <button
 //           onClick={() => setSortOrder("none")}
 //           className="px-3 py-1 bg-gray-200 rounded"
@@ -167,13 +150,13 @@
 //         </button>
 //       </div>
 
-//       {/* PRODUCTS */}
+//       {/* PRODUCTS GRID */}
 //       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 //         {filteredProducts.map((product) => {
-//           const cartItem = cart.find((item) => item.id === product.id);
+//           const cartItem = cart.find((i) => i.id === product.id);
 //           const qty = cartItem ? cartItem.qty : 0;
-//           // Agar cartItem mila → uski quantity show karo
-//           // Agar cartItem nahi mila → quantity = 0
+
+//           const isOutOfStock = product.stock === 0 || qty >= product.stock;
 
 //           return (
 //             <div key={product.id} className="border rounded p-4 shadow">
@@ -181,19 +164,29 @@
 //                 src={product.thumbnail}
 //                 className="h-40 w-full object-cover mb-2 rounded"
 //               />
-
 //               <h4 className="font-semibold">{product.title}</h4>
 //               <p>${product.price}</p>
+//               <p className="text-sm">
+//                 Stock: <b>{product.stock}</b>
+//               </p>
 
 //               {qty > 0 && (
 //                 <p className="font-semibold text-green-600">In Cart: {qty}</p>
 //               )}
+//               {isOutOfStock && (
+//                 <p className="text-red-600 font-semibold">Out of Stock</p>
+//               )}
 
 //               <button
 //                 onClick={() => handleAddToCart(product)}
-//                 className="bg-blue-500 text-white w-full mt-2 py-1 rounded"
+//                 disabled={isOutOfStock}
+//                 className={`w-full mt-2 py-1 rounded text-white ${
+//                   isOutOfStock
+//                     ? "bg-gray-400 cursor-not-allowed"
+//                     : "bg-blue-500"
+//                 }`}
 //               >
-//                 Add to Cart
+//                 {isOutOfStock ? "Out of Stock" : "Add to Cart"}
 //               </button>
 //             </div>
 //           );
@@ -204,13 +197,6 @@
 // };
 
 // export default ProductList;
-
-
-
-
-
-
-
 
 
 
@@ -236,12 +222,20 @@ const ProductList = () => {
   const [sortOrder, setSortOrder] = useState("none");
   const [range, setRange] = useState([0, 2000]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  // LOADING STATE
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProductList(data.products);
         setFilteredProducts(data.products);
+        setLoading(false);
       });
   }, []);
 
@@ -249,35 +243,41 @@ const ProductList = () => {
 
   const handleCheckboxChange = (cat) => {
     setSelectedCategories((prev) =>
-      prev.includes(cat)
-        ? prev.filter((c) => c !== cat)
-        : [...prev, cat]
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
     );
   };
 
+  // FILTER LOGIC
   useEffect(() => {
-    const filtered =  stockProducts
-      .filter(
-        (p) =>
-          searchTerm.trim() === "" ||
-          p.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-      .filter(
-        (p) =>
-          selectedCategories.length === 0 ||
-          selectedCategories.includes(p.category)
-      )
-      .filter((p) => selectedRadio === "All" || p.category === selectedRadio)
-      .filter((p) => p.price >= range[0] && p.price <= range[1])
-      .sort((a, b) =>
-        sortOrder === "lowToHigh"
-          ? a.price - b.price
-          : sortOrder === "highToLow"
-          ? b.price - a.price
-          : 0
-      );
+    setLoading(true); // filter change pe loading true
+    const timeout = setTimeout(() => {
+      const filtered = stockProducts
+        .filter(
+          (p) =>
+            searchTerm.trim() === "" ||
+            p.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .filter(
+          (p) =>
+            selectedCategories.length === 0 ||
+            selectedCategories.includes(p.category)
+        )
+        .filter((p) => selectedRadio === "All" || p.category === selectedRadio)
+        .filter((p) => p.price >= range[0] && p.price <= range[1])
+        .sort((a, b) =>
+          sortOrder === "lowToHigh"
+            ? a.price - b.price
+            : sortOrder === "highToLow"
+            ? b.price - a.price
+            : 0
+        );
 
-    setFilteredProducts(filtered);
+      setFilteredProducts(filtered);
+      setCurrentPage(1); // filter change pe page reset
+      setLoading(false);
+    }, 200); // 200ms delay for smoothness
+
+    return () => clearTimeout(timeout);
   }, [
     searchTerm,
     selectedCategories,
@@ -287,10 +287,16 @@ const ProductList = () => {
     stockProducts,
   ]);
 
-  return (
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (j
     <div className="mt-8">
       <h2 className="text-2xl font-semibold mb-4">🛍️ Products</h2>
 
+      {/* Search */}
       <input
         type="text"
         placeholder="Search..."
@@ -299,7 +305,7 @@ const ProductList = () => {
         className="p-2 border rounded w-full mb-4"
       />
 
-      {/* -------- CHECKBOX FIXED KEY -------- */}
+      {/* Checkbox Categories */}
       <div className="flex gap-4 mb-4 flex-wrap">
         {categories.map((cat) => (
           <label key={`checkbox-${cat}`} className="flex items-center space-x-2">
@@ -313,7 +319,7 @@ const ProductList = () => {
         ))}
       </div>
 
-      {/* -------- RADIO FIXED KEY -------- */}
+      {/* Radio Categories */}
       <div className="flex gap-4 mb-4 flex-wrap">
         {["All", ...categories].map((cat) => (
           <label key={`radio-${cat}`} className="flex items-center space-x-2">
@@ -328,7 +334,7 @@ const ProductList = () => {
         ))}
       </div>
 
-      {/* RANGE */}
+      {/* Price Range */}
       <div className="mb-4">
         <label>
           Price Range: ${range[0]} - ${range[1]}
@@ -351,43 +357,160 @@ const ProductList = () => {
         </div>
       </div>
 
-      {/* SORT */}
+      {/* Sort Buttons */}
       <div className="flex gap-4 mb-6">
-        <button onClick={() => setSortOrder("lowToHigh")} className="px-3 py-1 bg-gray-200 rounded">Low to High</button>
-        <button onClick={() => setSortOrder("highToLow")} className="px-3 py-1 bg-gray-200 rounded">High to Low</button>
-        <button onClick={() => setSortOrder("none")} className="px-3 py-1 bg-gray-200 rounded">Default</button>
+        <button
+          onClick={() => setSortOrder("lowToHigh")}
+          className="px-3 py-1 bg-gray-200 rounded"
+        >
+          Low to High
+        </button>
+        <button
+          onClick={() => setSortOrder("highToLow")}
+          className="px-3 py-1 bg-gray-200 rounded"
+        >
+          High to Low
+        </button>
+        <button
+          onClick={() => setSortOrder("none")}
+          className="px-3 py-1 bg-gray-200 rounded"
+        >
+          Default
+        </button>
       </div>
 
-      {/* PRODUCTS GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => {
-          const cartItem = cart.find((i) => i.id === product.id);
-          const qty = cartItem ? cartItem.qty : 0;
+      {/* Products Grid */}
+      {loading ? (
+        <div className="text-center py-10 text-gray-500">Loading Products...</div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {currentItems.map((product) => {
+            const cartItem = cart.find((i) => i.id === product.id);
+            const qty = cartItem ? cartItem.qty : 0;
+            const isOutOfStock = product.stock === 0 || qty >= product.stock;
 
-           const isOutOfStock = product.stock === 0 || qty >= product.stock;
-
-          return (
-            <div key={product.id} className="border rounded p-4 shadow">
-              <img src={product.thumbnail} className="h-40 w-full object-cover mb-2 rounded" />
-              <h4 className="font-semibold">{product.title}</h4>
-              <p>${product.price}</p>
-              <p className="text-sm">Stock: <b>{product.stock}</b></p>
-
-              {qty > 0 && <p className="font-semibold text-green-600">In Cart: {qty}</p>}
-              {isOutOfStock && <p className="text-red-600 font-semibold">Out of Stock</p>}
-
-              <button
-                onClick={() => handleAddToCart(product)}
-                disabled={isOutOfStock}
-                className={`w-full mt-2 py-1 rounded text-white ${isOutOfStock ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500"}`}
+            return (
+              <div
+                key={product.id}
+                className="border rounded p-4 shadow transform transition duration-300 hover:scale-105"
               >
-                {isOutOfStock ? "Out of Stock" : "Add to Cart"}
-              </button>
-            </div>
-          );
-        })}
-        
+                <img
+                  src={product.thumbnail}
+                  className="h-40 w-full object-cover mb-2 rounded"
+                />
+                <h4 className="font-semibold">{product.title}</h4>
+                <p>${product.price}</p>
+                <p className="text-sm">
+                  Stock: <b>{product.stock}</b>
+                </p>
+                {qty > 0 && (
+                  <p className="font-semibold text-green-600">In Cart: {qty}</p>
+                )}
+                {isOutOfStock && (
+                  <p className="text-red-600 font-semibold">Out of Stock</p>
+                )}
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  disabled={isOutOfStock}
+                  className={`w-full mt-2 py-1 rounded text-white ${
+                    isOutOfStock ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500"
+                  }`}
+                >
+                  {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+       {/* Pagination Info */}
+      <span className="text-gray-700 text-sm mt-3 block text-center">
+        Page {currentPage} of {totalPages}
+      </span>
+
+      {/* Pagination */}
+      <div className="flex justify-center mt-6 gap-2">
+        {/* <button
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          disabled={currentPage === 1}
+          className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
+        >
+          Prev
+        </button>
+
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => setCurrentPage(i + 1)}
+            className={`px-3 py-1 rounded ${
+              currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+
+        <button
+          onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
+        >
+          Next
+        </button> */}
+
+
+        // Pagination buttons ke andar
+<button
+  onClick={() => {
+    setLoading(true); // loading start
+    setTimeout(() => {
+      setCurrentPage((p) => Math.max(p - 1, 1));
+      setLoading(false); // loading stop
+    }, 150); // 150ms delay smoothness ke liye
+  }}
+  disabled={currentPage === 1}
+  className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
+>
+  Prev
+</button>
+
+{Array.from({ length: totalPages }, (_, i) => (
+  <button
+    key={i + 1}
+    onClick={() => {
+      setLoading(true);
+      setTimeout(() => {
+        setCurrentPage(i + 1);
+        setLoading(false);
+      }, 150);
+    }}
+    className={`px-3 py-1 rounded ${
+      currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+    }`}
+  >
+    {i + 1}
+  </button>
+))}
+
+<button
+  onClick={() => {
+    setLoading(true);
+    setTimeout(() => {
+      setCurrentPage((p) => Math.min(p + 1, totalPages));
+      setLoading(false);
+    }, 150);
+  }}
+  disabled={currentPage === totalPages}
+  className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
+>
+  Next
+</button>
+
+
+
+
       </div>
+
     </div>
   );
 };
