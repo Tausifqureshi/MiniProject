@@ -292,7 +292,7 @@ const ProductList = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
 
-  return (j
+  return (
     <div className="mt-8">
       <h2 className="text-2xl font-semibold mb-4">🛍️ Products</h2>
 
