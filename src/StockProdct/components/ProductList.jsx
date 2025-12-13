@@ -198,16 +198,6 @@
 
 // export default ProductList;
 
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect, useState, useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 
@@ -275,7 +265,7 @@ const ProductList = () => {
       setFilteredProducts(filtered);
       setCurrentPage(1); // filter change pe page reset
       setLoading(false);
-    }, 200); // 200ms delay for smoothness
+    }, 1000); // 1000ms delay for smoothness
 
     return () => clearTimeout(timeout);
   }, [
@@ -290,7 +280,10 @@ const ProductList = () => {
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredProducts.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   return (
     <div className="mt-8">
@@ -308,7 +301,10 @@ const ProductList = () => {
       {/* Checkbox Categories */}
       <div className="flex gap-4 mb-4 flex-wrap">
         {categories.map((cat) => (
-          <label key={`checkbox-${cat}`} className="flex items-center space-x-2">
+          <label
+            key={`checkbox-${cat}`}
+            className="flex items-center space-x-2"
+          >
             <input
               type="checkbox"
               checked={selectedCategories.includes(cat)}
@@ -381,7 +377,9 @@ const ProductList = () => {
 
       {/* Products Grid */}
       {loading ? (
-        <div className="text-center py-10 text-gray-500">Loading Products...</div>
+        <div className="text-center py-10 text-gray-500">
+          Loading Products...
+        </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {currentItems.map((product) => {
@@ -413,7 +411,9 @@ const ProductList = () => {
                   onClick={() => handleAddToCart(product)}
                   disabled={isOutOfStock}
                   className={`w-full mt-2 py-1 rounded text-white ${
-                    isOutOfStock ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500"
+                    isOutOfStock
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-blue-500"
                   }`}
                 >
                   {isOutOfStock ? "Out of Stock" : "Add to Cart"}
@@ -423,7 +423,7 @@ const ProductList = () => {
           })}
         </div>
       )}
-       {/* Pagination Info */}
+      {/* Pagination Info */}
       <span className="text-gray-700 text-sm mt-3 block text-center">
         Page {currentPage} of {totalPages}
       </span>
@@ -458,59 +458,52 @@ const ProductList = () => {
           Next
         </button> */}
 
+        <button
+          onClick={() => {
+            setLoading(true); // loading start
+            setTimeout(() => {
+              setCurrentPage((p) => Math.max(p - 1, 1));
+              setLoading(false); // loading stop
+            }, 1000); // 150ms delay smoothness ke liye
+          }}
+          disabled={currentPage === 1}
+          className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
+        >
+          Prev
+        </button>
 
-        // Pagination buttons ke andar
-<button
-  onClick={() => {
-    setLoading(true); // loading start
-    setTimeout(() => {
-      setCurrentPage((p) => Math.max(p - 1, 1));
-      setLoading(false); // loading stop
-    }, 150); // 150ms delay smoothness ke liye
-  }}
-  disabled={currentPage === 1}
-  className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
->
-  Prev
-</button>
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => {
+              setLoading(true);
+              setTimeout(() => {
+                setCurrentPage(i + 1);
+                setLoading(false);
+              }, 1000);
+            }}
+            className={`px-3 py-1 rounded ${
+              currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
 
-{Array.from({ length: totalPages }, (_, i) => (
-  <button
-    key={i + 1}
-    onClick={() => {
-      setLoading(true);
-      setTimeout(() => {
-        setCurrentPage(i + 1);
-        setLoading(false);
-      }, 150);
-    }}
-    className={`px-3 py-1 rounded ${
-      currentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"
-    }`}
-  >
-    {i + 1}
-  </button>
-))}
-
-<button
-  onClick={() => {
-    setLoading(true);
-    setTimeout(() => {
-      setCurrentPage((p) => Math.min(p + 1, totalPages));
-      setLoading(false);
-    }, 150);
-  }}
-  disabled={currentPage === totalPages}
-  className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
->
-  Next
-</button>
-
-
-
-
+        <button
+          onClick={() => {
+            setLoading(true);
+            setTimeout(() => {
+              setCurrentPage((p) => Math.min(p + 1, totalPages));
+              setLoading(false);
+            }, 1000);
+          }}
+          disabled={currentPage === totalPages}
+          className="px-3 py-1 bg-gray-300 rounded disabled:cursor-not-allowed"
+        >
+          Next
+        </button>
       </div>
-
     </div>
   );
 };

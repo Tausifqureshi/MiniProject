@@ -1,3 +1,4 @@
+// only paginationc code
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 
@@ -165,25 +166,25 @@
 
 
 
-
+// pagination with select all and delete functionality
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function Paginations() {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState([]);  //
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+  const [itemsPerPage] = useState(10); // Items per page
 
   // 👉 Yaha selected IDs store honge (SIRF current page ke)
   const [selectedIds, setSelectedIds] = useState([]);
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = userData.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem = currentPage * itemsPerPage; // Last item index
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage; // First item index
+  const currentItems = userData.slice(indexOfFirstItem, indexOfLastItem);// Current page items
 
-  const totalPages = Math.ceil(userData.length / itemsPerPage);
+  const totalPages = Math.ceil(userData.length / itemsPerPage); // Total pages
 
   useEffect(() => {
     async function fetchUserData() {
@@ -210,29 +211,50 @@ function Paginations() {
   // ✔ SINGLE CHECKBOX SELECT/UNSELECT
   // --------------------------
   const handleSingleSelect = (id) => {
-    setSelectedIds((prev) =>
-      prev.includes(id)
-        ? prev.filter((item) => item !== id) // unselect
-        : [...prev, id] // select
-    );
+    // setSelectedIds((prev) =>
+    //   prev.includes(id)
+    //     ? prev.filter((item) => item !== id) // unselect
+    //     : [...prev, id] // select
+    // );
+
+    if (selectedIds.includes(id)) {
+      // unselect
+      setSelectedIds((prev) => prev.filter((item) => item !== id));
+    }
+    else {
+      // select
+      setSelectedIds((prev) => [...prev, id]);
+    }
+
   };
 
   // --------------------------
   // ✔ SELECT ALL (only current page)
   // --------------------------
-  const handleSelectAll = () => {
-    const currentPageIds = currentItems.map((u) => u.id);
+ const handleSelectAll = () => {
+ 
+    // 👉 Current page ke users ki IDs ka array banao map se
+  // Example: [11, 12, 13, 14]
 
-    const allSelected = currentPageIds.every((id) => selectedIds.includes(id));
+  const currentPageIds = currentItems.map((u) => u.id);
 
-    if (allSelected) {
-      // unselect all
-      setSelectedIds((prev) => prev.filter((id) => !currentPageIds.includes(id)));
-    } else {
-      // select all
-      setSelectedIds((prev) => [...new Set([...prev, ...currentPageIds])]);
-    }
-  };
+  // 👉 Check karo: kya current page ke SAARE IDs already selected hain?
+  // every() → har ID check karega
+  // includes() → selectedIds me wo ID mil rahi hai ya nahi
+  const allSelected = currentPageIds.every((id) => selectedIds.includes(id));
+
+  if (allSelected) {// 👉 Agar saare selected hain → to current page ke IDs ko unselect karo
+
+    setSelectedIds((prev) => // ❌ Unselect all: selectedIds se currentPageIds ko hatao
+      prev.filter((id) => !currentPageIds.includes(id))
+    );
+  } else {
+    // 👉 Agar saare selected nahi hain → to current page ke saare IDs ko select kar do
+    // new Set → duplicate IDs add hone se rokta hai
+    setSelectedIds((prev) => [...new Set([...prev, ...currentPageIds])]);
+  }
+};
+
 
   // --------------------------
   // ✔ DELETE ONLY CURRENT PAGE SELECTED ITEMS

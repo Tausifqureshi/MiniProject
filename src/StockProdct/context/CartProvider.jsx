@@ -1,3 +1,4 @@
+
 // Stock add product context file hai ye
 import React, { createContext, useState } from "react";
 
@@ -11,6 +12,7 @@ const CartProvider = ({ children }) => {
   // UI WORKING COPY (stock update yaha hota hai)
   const [stockProducts, setStockProducts] = useState([]);
 
+  
   // CART STATE
   const [cart, setCart] = useState(() => {
     try {
@@ -20,6 +22,7 @@ const CartProvider = ({ children }) => {
       return [];
     }
   });
+ 
 
   // 1) SET PRODUCT LIST (API se)
   const setProductList = (apiData) => {
@@ -176,6 +179,7 @@ const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-};
+ };
+
 
 export default CartProvider;
