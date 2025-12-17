@@ -243,16 +243,24 @@ function Paginations() {
   // includes() → selectedIds me wo ID mil rahi hai ya nahi
   const allSelected = currentPageIds.every((id) => selectedIds.includes(id));
 
-  if (allSelected) {// 👉 Agar saare selected hain → to current page ke IDs ko unselect karo
+  // if (allSelected) {// 👉 Agar saare selected hain → to current page ke IDs ko unselect karo
 
-    setSelectedIds((prev) => // ❌ Unselect all: selectedIds se currentPageIds ko hatao
-      prev.filter((id) => !currentPageIds.includes(id))
-    );
-  } else {
-    // 👉 Agar saare selected nahi hain → to current page ke saare IDs ko select kar do
-    // new Set → duplicate IDs add hone se rokta hai
-    setSelectedIds((prev) => [...new Set([...prev, ...currentPageIds])]);
-  }
+  //   setSelectedIds((prev) => // ❌ Unselect all: selectedIds se currentPageIds ko hatao
+  //     prev.filter((id) => !currentPageIds.includes(id))
+  //   );
+  // } else {
+  //   // 👉 Agar saare selected nahi hain → to current page ke saare IDs ko select kar do
+  //   // new Set → duplicate IDs add hone se rokta hai
+  //   setSelectedIds((prev) => [...new Set([...prev, ...currentPageIds])]);
+  // }
+
+   if (allSelected) {
+      // ❌ Unselect all
+      setSelectedIds([]);
+    } else {
+      // ✅ Select all
+      setSelectedIds(allIds);
+    }
 };
 
 
