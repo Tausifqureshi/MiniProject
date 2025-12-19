@@ -277,13 +277,13 @@ const ProductList = () => {
     stockProducts,
   ]);
 
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage); // total pages calculation
+  const indexOfLastItem = currentPage * itemsPerPage; // last item index
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage; // first item index
   const currentItems = filteredProducts.slice(
     indexOfFirstItem,
     indexOfLastItem
-  );
+  ); // current page items 8 items
 
   return (
     <div className="mt-8">
