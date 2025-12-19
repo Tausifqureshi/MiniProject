@@ -21,9 +21,9 @@ function App() {
       <h1>Mini Project </h1>
       {/* <RouterEax /> */}
 
-      <RenderAllFile />
+      {/* <RenderAllFile /> */}
 
-      {/* <Paginations /> */}
+      <Paginations />
 
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
