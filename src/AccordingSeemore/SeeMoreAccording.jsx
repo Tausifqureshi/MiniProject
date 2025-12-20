@@ -67,6 +67,7 @@ export default function SeeMoreAccordion() {
           // const isOpen = openIndex === index; //Single according open karne ke liye aisa.
           const isOpen = accordionOpen[index] || false; // Multiple accordion open karne ke liye
           const isExpanded = seeMoreExpanded[index] || false;// Multiple see more expanded karne ke liye
+          // agar is item ka text expanded hai to true, warna false
 
           // Short text for See More feature
           const shortText =
