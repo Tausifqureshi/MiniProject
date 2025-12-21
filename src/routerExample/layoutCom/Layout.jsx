@@ -416,7 +416,7 @@ export default function Layout() {
         </div>
       </header>
  
-      {/* 📱 Mobile Sidebar */}
+      {/* 📱 Mobile Sidebar */} 
       {mobileSidebarOpen && (
         <>
           {/* Overlay */}
