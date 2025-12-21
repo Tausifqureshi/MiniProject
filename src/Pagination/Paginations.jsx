@@ -171,7 +171,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function Paginations() {
-  const [userData, setUserData] = useState([]);  //
+  const [originalData, setOriginalData] = useState([]);  // original user data
+  const [searchTerm, setSearchTerm] = useState(""); // search term state
+  const [filteredProducts, setFilteredProducts] = useState([]); // filtered products
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1); // Current page number
@@ -182,16 +184,17 @@ function Paginations() {
 
   const indexOfLastItem = currentPage * itemsPerPage; // Last item index
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // First item index
-  const currentItems = userData.slice(indexOfFirstItem, indexOfLastItem);// Current page items
+  const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);// Current page items
 
-  const totalPages = Math.ceil(userData.length / itemsPerPage); // Total pages
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage); // Total pages
 
   useEffect(() => {
     async function fetchUserData() {
       try {
         setLoading(true);
         const response = await axios.get("https://dummyjson.com/users?limit=80&skip=0");
-        setUserData(response.data.users);
+        setOriginalData(response.data.users); // Set all user data
+        setFilteredProducts(response.data.users); // Set filtered products initially
       } catch (error) {
         setError("Failed to fetch user data.");
       } finally {
@@ -201,6 +204,23 @@ function Paginations() {
 
     fetchUserData();
   }, []);
+
+
+  useEffect(()=>{
+    if(searchTerm.trim() ===""){
+      setFilteredProducts(originalData);
+    }
+    else{
+      const lower = searchTerm.toLowerCase();
+      const filtered = originalData.filter((u) =>
+        u.firstName.toLowerCase().includes(lower) ||
+        u.lastName.toLowerCase().includes(lower)
+      );
+      setFilteredProducts(filtered);
+      
+    }
+    setCurrentPage(1); // Reset to first page on search
+  },[searchTerm])
 
   // 🔥 PAGE CHANGE hone pe selected items reset ho jayenge
   // useEffect(() => {
@@ -269,10 +289,10 @@ function Paginations() {
   // --------------------------
   const handleDelete = () => {
     if (selectedIds.length === 0) return alert("No items selected!");
-
-    const updatedData = userData.filter((u) => !selectedIds.includes(u.id));
-    setUserData(updatedData);
-    setSelectedIds([]);
+    const updatedData = originalData.filter((u) => !selectedIds.includes(u.id));
+    setOriginalData(updatedData); // update original data
+    setFilteredProducts(updatedData); // update filtered products
+    setSelectedIds([]); // delete hone ke baad checked items ko clear kar do
   };
 
   if (loading) return <div className="text-center p-5 text-2xl font-semibold">Loading...</div>;
@@ -281,6 +301,10 @@ function Paginations() {
   return (
     <div className="max-w-4xl mx-auto p-5 bg-white rounded-2xl shadow-xl border border-gray-300">
       <h1 className="text-xl font-semibold text-gray-900 text-center mb-4 tracking-tight">User Data</h1>
+      <div className="mb-4 text-gray-700 text-sm">
+        <input type="text" placeholder="Search..." className="border border-gray-300 rounded-md px-3 py-1 w-full" onChange={(e) => setSearchTerm(e.target.value)} />
+
+      </div>
 
       {/* SELECT ALL + DELETE BUTTON */}
       <div className="flex items-center justify-between mb-2">
