@@ -206,6 +206,7 @@ function Paginations() {
   }, []);
 
 
+  // Search filtering
   useEffect(()=>{
     if(searchTerm.trim() ===""){
       setFilteredProducts(originalData);
@@ -217,15 +218,19 @@ function Paginations() {
         u.lastName.toLowerCase().includes(lower)
       );
       setFilteredProducts(filtered);
-      
     }
-    setCurrentPage(1); // Reset to first page on search
+    setCurrentPage(1); // data nhi milne pe page 1 pe le aao
+    setSelectedIds([]); // search hone pe checkbox clear kar do
+
   },[searchTerm])
 
-  // 🔥 PAGE CHANGE hone pe selected items reset ho jayenge
+  // 🔥 PAGE CHANGE hone pe checkbox items reset ho jayenge
   // useEffect(() => {
   //   setSelectedIds([]);
   // }, [currentPage]);
+
+
+
 
   // --------------------------
   // ✔ SINGLE CHECKBOX SELECT/UNSELECT
@@ -290,55 +295,73 @@ function Paginations() {
   const handleDelete = () => {
     if (selectedIds.length === 0) return alert("No items selected!");
     const updatedData = originalData.filter((u) => !selectedIds.includes(u.id));
-    setOriginalData(updatedData); // update original data
-    setFilteredProducts(updatedData); // update filtered products
+    setOriginalData(updatedData); // original data show karo
+    setFilteredProducts(updatedData); // jo delete hua wo filtered products se bhi hata do
     setSelectedIds([]); // delete hone ke baad checked items ko clear kar do
   };
 
   if (loading) return <div className="text-center p-5 text-2xl font-semibold">Loading...</div>;
   if (error) return <div className="text-center p-5 text-red-600 text-2xl font-semibold">Error: {error}</div>;
 
-  return (
-    <div className="max-w-4xl mx-auto p-5 bg-white rounded-2xl shadow-xl border border-gray-300">
-      <h1 className="text-xl font-semibold text-gray-900 text-center mb-4 tracking-tight">User Data</h1>
-      <div className="mb-4 text-gray-700 text-sm">
-        <input type="text" placeholder="Search..." className="border border-gray-300 rounded-md px-3 py-1 w-full" onChange={(e) => setSearchTerm(e.target.value)} />
+return (
+  <div className="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-3xl shadow-2xl border border-gray-200">
+    {/* Header */}
+    <div className="mb-6">
+      <h1 className="text-2xl font-bold text-gray-900 text-center tracking-tight">
+        User Management
+      </h1>
+      <p className="text-sm text-gray-500 text-center mt-1">
+        Search, select and manage users easily
+      </p>
+    </div>
 
-      </div>
+    {/* Search */}
+    <div className="relative mb-6">
+      <input
+        type="text"
+        placeholder="Search by first or last name..."
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full rounded-2xl border border-gray-300 bg-gray-50 px-5 py-3 text-sm shadow-sm
+        focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition"
+      />
+    </div>
 
-      {/* SELECT ALL + DELETE BUTTON */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            onChange={handleSelectAll}
-            checked={currentItems.every((u) => selectedIds.includes(u.id))}
-          />
-          <span>Select All (Current Page)</span>
-        </div>
+    {/* Select All + Delete */}
+    <div className="flex items-center justify-between mb-3">
+      <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+        <input
+          type="checkbox"
+          onChange={handleSelectAll}
+          checked={currentItems.length > 0 && currentItems.every((u) => selectedIds.includes(u.id))}
+          className="h-4 w-4 accent-blue-600"
+        />
+        Select all (current page)
+      </label>
 
-        <button
-          // className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
-          onClick={handleDelete}
-          disabled={selectedIds.length === 0}
-          className={`px-4 py-2 rounded-md ${
+      <button
+        onClick={handleDelete}
+        disabled={selectedIds.length === 0}
+        className={`px-5 py-2 text-sm font-semibold rounded-xl transition
+          ${
             selectedIds.length === 0
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-red-600 text-white hover:bg-red-700"
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-red-600 text-white hover:bg-red-700 shadow-md"
           }`}
-        >
-          Delete Selected
-        </button>
-      </div>
+      >
+        Delete Selected
+      </button>
+    </div>
 
-      <div className="overflow-hidden rounded-xl border border-gray-300 shadow-sm">
-        <table className="min-w-full text-[13px] text-gray-800 font-serif">
-          <thead>
-            <tr className="bg-gray-800 text-white border-b border-gray-700">
-              <th className="py-3 px-4 border-r">Select</th>
-              <th className="py-3 px-4 border-r">ID</th>
-              <th className="py-3 px-4 border-r">Name</th>
-              <th className="py-3 px-4">Email</th>
+    {/* Table */}
+    <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm text-gray-700">
+          <thead className="sticky top-0 bg-gray-900 text-white">
+            <tr>
+              <th className="px-4 py-3 text-left">Select</th>
+              <th className="px-4 py-3 text-left">ID</th>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Email</th>
             </tr>
           </thead>
 
@@ -346,68 +369,82 @@ function Paginations() {
             {currentItems.map((user, index) => (
               <tr
                 key={user.id}
-                className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-gray-200/60`}
+                className={`border-b transition ${
+                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                } hover:bg-blue-50`}
               >
-                <td className="py-2.5 px-4 border-r">
+                <td className="px-4 py-3">
                   <input
                     type="checkbox"
                     checked={selectedIds.includes(user.id)}
                     onChange={() => handleSingleSelect(user.id)}
+                    className="h-4 w-4 accent-blue-600"
                   />
                 </td>
-
-                <td className="py-2.5 px-4 border-r">{user.id}</td>
-                <td className="py-2.5 px-4 border-r">
+                <td className="px-4 py-3">{user.id}</td>
+                <td className="px-4 py-3 font-medium">
                   {user.firstName} {user.lastName}
                 </td>
-                <td className="py-2.5 px-4">{user.email}</td>
+                <td className="px-4 py-3 text-gray-600">{user.email}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      {/* Pagination Info */}
-      <span className="text-gray-700 text-sm mt-3 block text-center">
-        Page {currentPage} of {totalPages}
-      </span>
-
-      {/* PAGINATION BUTTONS */}
-      <div className="flex justify-between items-center mt-4">
-        <button
-          className={`px-4 py-2 rounded-md ${
-            currentPage === 1 ? "bg-gray-300 text-gray-600 cursor-not-allowed" : "bg-blue-600 text-white"
-          }`}
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-        >
-          Previous
-        </button>
-
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            className={`mx-1 px-3 py-1 rounded-md ${
-              currentPage === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200"
-            }`}
-            onClick={() => setCurrentPage(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
-
-        <button
-          className={`px-4 py-2 rounded-md ${
-            currentPage === totalPages ? "bg-gray-300 text-gray-600 cursor-not-allowed" : "bg-blue-600 text-white"
-          }`}
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-        >
-          Next
-        </button>
-      </div>
     </div>
-  );
+
+    {/* Pagination info */}
+    <p className="text-center text-sm text-gray-500 mt-4">
+      Page <span className="font-semibold">{currentPage}</span> of{" "}
+      <span className="font-semibold">{totalPages}</span>
+    </p>
+
+    {/* Pagination buttons */}
+    <div className="flex justify-center items-center gap-2 mt-4 flex-wrap">
+      <button
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+        className={`px-4 py-2 rounded-xl text-sm font-medium transition
+          ${
+            currentPage === 1
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-blue-600 text-white hover:bg-blue-700 shadow"
+          }`}
+      >
+        Previous
+      </button>
+
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          key={i + 1}
+          onClick={() => setCurrentPage(i + 1)}
+          className={`px-3 py-2 rounded-xl text-sm font-medium transition
+            ${
+              currentPage === i + 1
+                ? "bg-blue-600 text-white shadow"
+                : "bg-gray-100 hover:bg-gray-200"
+            }`}
+        >
+          {i + 1}
+        </button>
+      ))}
+
+      <button
+        disabled={currentPage === totalPages}
+        onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+        className={`px-4 py-2 rounded-xl text-sm font-medium transition
+          ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-blue-600 text-white hover:bg-blue-700 shadow"
+          }`}
+      >
+        Next
+      </button>
+    </div>
+  </div>
+);
+
 }
 
 export default Paginations;
