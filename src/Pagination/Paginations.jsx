@@ -206,23 +206,37 @@ function Paginations() {
   }, []);
 
 
-  // Search filtering
-  useEffect(()=>{
-    if(searchTerm.trim() ===""){
-      setFilteredProducts(originalData);
-    }
-    else{
-      const lower = searchTerm.toLowerCase();
-      const filtered = originalData.filter((u) =>
-        u.firstName.toLowerCase().includes(lower) ||
-        u.lastName.toLowerCase().includes(lower)
-      );
-      setFilteredProducts(filtered);
-    }
-    setCurrentPage(1); // data nhi milne pe page 1 pe le aao
-    setSelectedIds([]); // search hone pe checkbox clear kar do
 
-  },[searchTerm])
+//Search Functionality
+useEffect(() => {
+  if (searchTerm.trim() === "") {
+    setFilteredProducts(originalData);
+  } else {
+    setFilteredProducts(
+      originalData.filter(
+        (u) =>
+          u.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          u.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }
+
+  const totalPagesAfterFilter = Math.ceil(filteredProducts.length / itemsPerPage); 
+  // filter lagne ke baad total pages calculate karo
+
+  if (filteredProducts.length > 0 && currentPage > totalPagesAfterFilter) {
+// agar filter lagane ke baad koi data nahi milta
+// to user jis page pe tha usi page pe rehne do
+// filter nahi mila → same page pe rehne do
+// filter mila → jis page pe data hai wahi page dikhao
+
+    setCurrentPage(totalPagesAfterFilter);
+  }
+
+  setSelectedIds([]); // search hone pe checkbox clear kar do
+}, [searchTerm, originalData]);
+
+  
 
   // 🔥 PAGE CHANGE hone pe checkbox items reset ho jayenge
   // useEffect(() => {
@@ -232,9 +246,7 @@ function Paginations() {
 
 
 
-  // --------------------------
   // ✔ SINGLE CHECKBOX SELECT/UNSELECT
-  // --------------------------
   const handleSingleSelect = (id) => {
     // setSelectedIds((prev) =>
     //   prev.includes(id)
@@ -253,9 +265,7 @@ function Paginations() {
 
   };
 
-  // --------------------------
   // ✔ SELECT ALL (only current page)
-  // --------------------------
  const handleSelectAll = () => {
  
     // 👉 Current page ke users ki IDs ka array banao map se
@@ -288,10 +298,7 @@ function Paginations() {
   //   }
 };
 
-
-  // --------------------------
   // ✔ DELETE ONLY CURRENT PAGE SELECTED ITEMS
-  // --------------------------
   const handleDelete = () => {
     if (selectedIds.length === 0) return alert("No items selected!");
     const updatedData = originalData.filter((u) => !selectedIds.includes(u.id));
