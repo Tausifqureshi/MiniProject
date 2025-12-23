@@ -167,503 +167,295 @@
 
 
 // pagination with select all and delete functionality
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-
-// function Paginations() {
-//   const [originalData, setOriginalData] = useState([]);  // original user data
-//   const [searchTerm, setSearchTerm] = useState(""); // search term state
-//   const [filteredProducts, setFilteredProducts] = useState([]); // filtered products
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState("");
-//   const [currentPage, setCurrentPage] = useState(1); // Current page number
-//   const [itemsPerPage] = useState(10); // Items per page
-
-//   // 👉 Yaha selected IDs store honge (SIRF current page ke)
-//   const [selectedIds, setSelectedIds] = useState([]);
-
-//   const indexOfLastItem = currentPage * itemsPerPage; // Last item index
-//   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // First item index
-//   const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);// Current page items
-
-//   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage); // Total pages
-
-//   useEffect(() => {
-//     async function fetchUserData() {
-//       try {
-//         setLoading(true);
-//         const response = await axios.get("https://dummyjson.com/users?limit=80&skip=0");
-//         setOriginalData(response.data.users); // Set all user data
-//         setFilteredProducts(response.data.users); // Set filtered products initially
-//       } catch (error) {
-//         setError("Failed to fetch user data.");
-//       } finally {
-//         setLoading(false);
-//       }
-//     }
-
-//     fetchUserData();
-//   }, []);
-
-
-
-// //Search Functionality
-// useEffect(() => {
-//   if (searchTerm.trim() === "") {
-//     setFilteredProducts(originalData);
-//   } else {
-//     setFilteredProducts(
-//       originalData.filter(
-//         (u) =>
-//           u.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//           u.lastName.toLowerCase().includes(searchTerm.toLowerCase())
-//       )
-//     );
-//   }
-
-//   const totalPagesAfterFilter = Math.ceil(filteredProducts.length / itemsPerPage); 
-//   // filter lagne ke baad total pages calculate karo
-
-//   if (filteredProducts.length > 0 && currentPage > totalPagesAfterFilter) {
-// // agar filter lagane ke baad koi data nahi milta
-// // to user jis page pe tha usi page pe rehne do
-// // filter nahi mila → same page pe rehne do
-// // filter mila → jis page pe data hai wahi page dikhao
-
-//     setCurrentPage(totalPagesAfterFilter);
-//   }
-
-//   setSelectedIds([]); // search hone pe checkbox clear kar do
-// }, [searchTerm, originalData]);
-
-  
-
-//   // 🔥 PAGE CHANGE hone pe checkbox items reset ho jayenge
-//   // useEffect(() => {
-//   //   setSelectedIds([]);
-//   // }, [currentPage]);
-
-
-
-
-//   // ✔ SINGLE CHECKBOX SELECT/UNSELECT
-//   const handleSingleSelect = (id) => {
-//     // setSelectedIds((prev) =>
-//     //   prev.includes(id)
-//     //     ? prev.filter((item) => item !== id) // unselect
-//     //     : [...prev, id] // select
-//     // );
-
-//     if (selectedIds.includes(id)) {
-//       // unselect
-//       setSelectedIds((prev) => prev.filter((item) => item !== id));
-//     }
-//     else {
-//       // select
-//       setSelectedIds((prev) => [...prev, id]);
-//     }
-
-//   };
-
-//   // ✔ SELECT ALL (only current page)
-//  const handleSelectAll = () => {
- 
-//     // 👉 Current page ke users ki IDs ka array banao map se
-//   // Example: [11, 12, 13, 14]
-
-//   const currentPageIds = currentItems.map((u) => u.id);
-
-//   // 👉 Check karo: kya current page ke SAARE IDs already selected hain?
-//   // every() → har ID check karega
-//   // includes() → selectedIds me wo ID mil rahi hai ya nahi
-//   const allSelected = currentPageIds.every((id) => selectedIds.includes(id));
-
-//   if (allSelected) {// 👉 Agar saare selected hain → to current page ke IDs ko unselect karo
-
-//     setSelectedIds((prev) => // ❌ Unselect all: selectedIds se currentPageIds ko hatao
-//       prev.filter((id) => !currentPageIds.includes(id))
-//     );
-//   } else {
-//     // 👉 Agar saare selected nahi hain → to current page ke saare IDs ko select kar do
-//     // new Set → duplicate IDs add hone se rokta hai
-//     setSelectedIds((prev) => [...new Set([...prev, ...currentPageIds])]);
-//   }
-
-//   //  if (allSelected) {
-//   //     // ❌ Unselect all
-//   //     setSelectedIds([]);
-//   //   } else {
-//   //     // ✅ Select all
-//   //     setSelectedIds(currentPageIds);
-//   //   }
-// };
-
-//   // ✔ DELETE ONLY CURRENT PAGE SELECTED ITEMS
-//   const handleDelete = () => {
-//     if (selectedIds.length === 0) return alert("No items selected!");
-//     const updatedData = originalData.filter((u) => !selectedIds.includes(u.id));
-//     setOriginalData(updatedData); // original data show karo
-//     setFilteredProducts(updatedData); // jo delete hua wo filtered products se bhi hata do
-//     setSelectedIds([]); // delete hone ke baad checked items ko clear kar do
-//   };
-
-//   if (loading) return <div className="text-center p-5 text-2xl font-semibold">Loading...</div>;
-//   if (error) return <div className="text-center p-5 text-red-600 text-2xl font-semibold">Error: {error}</div>;
-
-// return (
-//   <div className="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-3xl shadow-2xl border border-gray-200">
-//     {/* Header */}
-//     <div className="mb-6">
-//       <h1 className="text-2xl font-bold text-gray-900 text-center tracking-tight">
-//         User Management
-//       </h1>
-//       <p className="text-sm text-gray-500 text-center mt-1">
-//         Search, select and manage users easily
-//       </p>
-//     </div>
-
-//     {/* Search */}
-//     <div className="relative mb-6">
-//       <input
-//         type="text"
-//         placeholder="Search by first or last name..."
-//         onChange={(e) => setSearchTerm(e.target.value)}
-//         className="w-full rounded-2xl border border-gray-300 bg-gray-50 px-5 py-3 text-sm shadow-sm
-//         focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition"
-//       />
-//     </div>
-
-//     {/* Select All + Delete */}
-//     <div className="flex items-center justify-between mb-3">
-//       <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
-//         <input
-//           type="checkbox"
-//           onChange={handleSelectAll}
-//           checked={currentItems.length > 0 && currentItems.every((u) => selectedIds.includes(u.id))}
-//           className="h-4 w-4 accent-blue-600"
-//         />
-//         Select all (current page)
-//       </label>
-
-//       <button
-//         onClick={handleDelete}
-//         disabled={selectedIds.length === 0}
-//         className={`px-5 py-2 text-sm font-semibold rounded-xl transition
-//           ${
-//             selectedIds.length === 0
-//               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-//               : "bg-red-600 text-white hover:bg-red-700 shadow-md"
-//           }`}
-//       >
-//         Delete Selected
-//       </button>
-//     </div>
-
-//     {/* Table */}
-//     <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-//       <div className="overflow-x-auto">
-//         <table className="min-w-full text-sm text-gray-700">
-//           <thead className="sticky top-0 bg-gray-900 text-white">
-//             <tr>
-//               <th className="px-4 py-3 text-left">Select</th>
-//               <th className="px-4 py-3 text-left">ID</th>
-//               <th className="px-4 py-3 text-left">Name</th>
-//               <th className="px-4 py-3 text-left">Email</th>
-//             </tr>
-//           </thead>
-
-//           <tbody>
-//             {currentItems.map((user, index) => (
-//               <tr
-//                 key={user.id}
-//                 className={`border-b transition ${
-//                   index % 2 === 0 ? "bg-white" : "bg-gray-50"
-//                 } hover:bg-blue-50`}
-//               >
-//                 <td className="px-4 py-3">
-//                   <input
-//                     type="checkbox"
-//                     checked={selectedIds.includes(user.id)}
-//                     onChange={() => handleSingleSelect(user.id)}
-//                     className="h-4 w-4 accent-blue-600"
-//                   />
-//                 </td>
-//                 <td className="px-4 py-3">{user.id}</td>
-//                 <td className="px-4 py-3 font-medium">
-//                   {user.firstName} {user.lastName}
-//                 </td>
-//                 <td className="px-4 py-3 text-gray-600">{user.email}</td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-
-//     {/* Pagination info */}
-//     <p className="text-center text-sm text-gray-500 mt-4">
-//       Page <span className="font-semibold">{currentPage}</span> of{" "}
-//       <span className="font-semibold">{totalPages}</span>
-//     </p>
-
-//     {/* Pagination buttons */}
-//     <div className="flex justify-center items-center gap-2 mt-4 flex-wrap">
-//       <button
-//         disabled={currentPage === 1}
-//         onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-//         className={`px-4 py-2 rounded-xl text-sm font-medium transition
-//           ${
-//             currentPage === 1
-//               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-//               : "bg-blue-600 text-white hover:bg-blue-700 shadow"
-//           }`}
-//       >
-//         Previous
-//       </button>
-
-//       {Array.from({ length: totalPages }, (_, i) => (
-//         <button
-//           key={i + 1}
-//           onClick={() => setCurrentPage(i + 1)}
-//           className={`px-3 py-2 rounded-xl text-sm font-medium transition
-//             ${
-//               currentPage === i + 1
-//                 ? "bg-blue-600 text-white shadow"
-//                 : "bg-gray-100 hover:bg-gray-200"
-//             }`}
-//         >
-//           {i + 1}
-//         </button>
-//       ))}
-
-//       <button
-//         disabled={currentPage === totalPages}
-//         onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-//         className={`px-4 py-2 rounded-xl text-sm font-medium transition
-//           ${
-//             currentPage === totalPages
-//               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-//               : "bg-blue-600 text-white hover:bg-blue-700 shadow"
-//           }`}
-//       >
-//         Next
-//       </button>
-//     </div>
-//   </div>
-// );
-
-// }
-
-// export default Paginations;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function Paginations() {
-  const [originalData, setOriginalData] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [originalData, setOriginalData] = useState(()=>{// original user data
+  //   const storedData = localStorage.getItem("usersData");
+  //   return storedData ? JSON.parse(storedData) : [];
+  // });  
+  // const [filteredProducts, setFilteredProducts] = useState([]); // filtered products
+
+  const [originalData, setOriginalData] = useState(() => {
+  try {
+    const stored = localStorage.getItem("tableData");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+});
+
+const [filteredProducts, setFilteredProducts] = useState(() => {
+  try {
+    const stored = localStorage.getItem("tableData");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+});
+
+  const [searchTerm, setSearchTerm] = useState(""); // search term state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+  const [itemsPerPage] = useState(10); // Items per page
+  const [editId, setEditId] = useState(null); // kaunsa user edit ho raha
+  const [editForm, setEditForm] = useState({
+  firstName: "",
+  lastName: "",
+  email: "",
+});
 
-  // checkbox
+
+  // 👉 Yaha selected IDs store honge (SIRF current page ke)
   const [selectedIds, setSelectedIds] = useState([]);
 
-  // edit states
-  const [editId, setEditId] = useState(null);
-  const [editForm, setEditForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
+  const indexOfLastItem = currentPage * itemsPerPage; // Last item index
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage; // First item index
+  const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);// Current page items
 
-  // pagination calc
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredProducts.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage); // Total pages
 
-  // fetch users
   useEffect(() => {
-    async function fetchUsers() {
+    async function fetchUserData() {
       try {
         setLoading(true);
-        const res = await axios.get(
-          "https://dummyjson.com/users?limit=80&skip=0"
-        );
-        setOriginalData(res.data.users);
-        setFilteredProducts(res.data.users);
-      } catch (err) {
-        setError("Failed to fetch data");
+        if(originalData.length > 0) return setLoading(false); // agar localStorage me data hai to API call mat karo
+
+        const response = await axios.get("https://dummyjson.com/users?limit=80&skip=0");
+        setOriginalData(response.data.users); // Set all user data
+        setFilteredProducts(response.data.users); // Set filtered products initially
+      } catch (error) {
+        setError("Failed to fetch user data.");
       } finally {
         setLoading(false);
       }
     }
-    fetchUsers();
+    fetchUserData();
   }, []);
 
-  // search
-  useEffect(() => {
-    const data =
-      searchTerm.trim() === ""
-        ? originalData
-        : originalData.filter(
-            (u) =>
-              u.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              u.lastName.toLowerCase().includes(searchTerm.toLowerCase())
-          );
+//Search Functionality
+useEffect(() => {
+  if (searchTerm.trim() === "") {
+    setFilteredProducts(originalData);
+  } else {
+    setFilteredProducts(
+      originalData.filter(
+        (u) =>
+          u.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          u.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }
 
-    setFilteredProducts(data);
-    setCurrentPage(1);
-    setSelectedIds([]);
-  }, [searchTerm, originalData]);
+  const totalPagesAfterFilter = Math.ceil(filteredProducts.length / itemsPerPage); 
+  // filter lagne ke baad total pages calculate karo
 
-  // checkbox single
+  if (filteredProducts.length > 0 && currentPage > totalPagesAfterFilter) {
+// agar filter lagane ke baad koi data nahi milta
+// to user jis page pe tha usi page pe rehne do
+// filter nahi mila → same page pe rehne do
+// filter mila → jis page pe data hai wahi page dikhao
+
+    setCurrentPage(totalPagesAfterFilter);
+  }
+
+  setSelectedIds([]); // search hone pe checkbox clear kar do
+}, [searchTerm, originalData]);
+
+  
+
+  // 🔥 PAGE CHANGE hone pe checkbox items reset ho jayenge
+  // useEffect(() => {
+  //   setSelectedIds([]);
+  // }, [currentPage]);
+
+const handleEdit = (user) => {
+  setEditId(user.id);
+  setEditForm({
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+  });
+};
+
+const handleEditChange = (e) => {
+  const { name, value } = e.target;
+  setEditForm((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
+const handleUpdate = (id) => {
+  const updatedData = originalData.map((u) =>
+    u.id === id ? { ...u, ...editForm } : u
+  );
+  setOriginalData(updatedData); // agar user ne kuch update kiya to original data me bhi update karo
+  setFilteredProducts(updatedData); // filtered products me bhi update karo
+  // ✅ localStorage update
+  localStorage.setItem("tableData", JSON.stringify(updatedData));
+
+  setEditId(null); // edit mode band
+};
+
+const handleCancel = () => {
+  setEditId(null);
+};
+
+  // ✔ SINGLE CHECKBOX SELECT/UNSELECT
   const handleSingleSelect = (id) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
-  };
+    // setSelectedIds((prev) =>
+    //   prev.includes(id)
+    //     ? prev.filter((item) => item !== id) // unselect
+    //     : [...prev, id] // select
+    // );
 
-  // select all current page
-  const handleSelectAll = () => {
-    const pageIds = currentItems.map((u) => u.id);
-    const allSelected = pageIds.every((id) => selectedIds.includes(id));
-
-    if (allSelected) {
-      setSelectedIds((prev) => prev.filter((id) => !pageIds.includes(id)));
-    } else {
-      setSelectedIds((prev) => [...new Set([...prev, ...pageIds])]);
+    if (selectedIds.includes(id)) {
+      // unselect
+      setSelectedIds((prev) => prev.filter((item) => item !== id));
     }
+    else {
+      // select
+      setSelectedIds((prev) => [...prev, id]);
+    }
+
   };
 
-  // delete
+  // ✔ SELECT ALL (only current page)
+ const handleSelectAll = () => {
+ 
+    // 👉 Current page ke users ki IDs ka array banao map se
+  // Example: [11, 12, 13, 14]
+
+  const currentPageIds = currentItems.map((u) => u.id);
+
+  // 👉 Check karo: kya current page ke SAARE IDs already selected hain?
+  // every() → har ID check karega
+  // includes() → selectedIds me wo ID mil rahi hai ya nahi
+  const allSelected = currentPageIds.every((id) => selectedIds.includes(id));
+
+  if (allSelected) {// 👉 Agar saare selected hain → to current page ke IDs ko unselect karo
+
+    setSelectedIds((prev) => // ❌ Unselect all: selectedIds se currentPageIds ko hatao
+      prev.filter((id) => !currentPageIds.includes(id))
+    );
+  } else {
+    // 👉 Agar saare selected nahi hain → to current page ke saare IDs ko select kar do
+    // new Set → duplicate IDs add hone se rokta hai
+    setSelectedIds((prev) => [...new Set([...prev, ...currentPageIds])]);
+  }
+
+  //  if (allSelected) {
+  //     // ❌ Unselect all
+  //     setSelectedIds([]);
+  //   } else {
+  //     // ✅ Select all
+  //     setSelectedIds(currentPageIds);
+  //   }
+};
+
+  // ✔ DELETE ONLY CURRENT PAGE SELECTED ITEMS
   const handleDelete = () => {
-    if (selectedIds.length === 0) return alert("No users selected");
-    const updated = originalData.filter(
-      (u) => !selectedIds.includes(u.id)
-    );
-    setOriginalData(updated);
-    setFilteredProducts(updated);
-    setSelectedIds([]);
+    if (selectedIds.length === 0) return alert("No items selected!");
+    const updatedData = originalData.filter((u) => !selectedIds.includes(u.id));
+
+    setOriginalData(updatedData); // agar user ne kuch delete kiya to original data me bhi delete karo
+
+    setFilteredProducts(updatedData); // jo delete hua wo filtered products se bhi hata do
+    localStorage.setItem("tableData", JSON.stringify(updatedData));
+
+    setSelectedIds([]); // delete hone ke baad checked items ko clear kar do
   };
 
-  // edit
-  const handleEdit = (user) => {
-    setEditId(user.id);
-    setEditForm({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    });
-  };
+  if (loading) return <div className="text-center p-5 text-2xl font-semibold">Loading...</div>;
+  if (error) return <div className="text-center p-5 text-red-600 text-2xl font-semibold">Error: {error}</div>;
 
-  const handleEditChange = (e) => {
-    const { name, value } = e.target;
-    setEditForm((prev) => ({ ...prev, [name]: value }));
-  };
+return (
+  <div className="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-3xl shadow-2xl border border-gray-200">
+    {/* Header */}
+    <div className="mb-6">
+      <h1 className="text-2xl font-bold text-gray-900 text-center tracking-tight">
+        User Management
+      </h1>
+      <p className="text-sm text-gray-500 text-center mt-1">
+        Search, select and manage users easily
+      </p>
+    </div>
 
-  const handleUpdate = (id) => {
-    const updated = originalData.map((u) =>
-      u.id === id ? { ...u, ...editForm } : u
-    );
-    setOriginalData(updated);
-    setFilteredProducts(updated);
-    setEditId(null);
-  };
-
-  const handleCancel = () => {
-    setEditId(null);
-  };
-
-  if (loading) return <div className="p-6 text-center">Loading...</div>;
-  if (error) return <div className="p-6 text-center text-red-600">{error}</div>;
-
-  return (
-    <div className="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
-      <h1 className="text-2xl font-bold text-center mb-6">User Management</h1>
-
-      {/* Search */}
+    {/* Search */}
+    <div className="relative mb-6">
       <input
         type="text"
-        placeholder="Search by name..."
+        placeholder="Search by first or last name..."
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full mb-4 px-4 py-2 border rounded"
+        className="w-full rounded-2xl border border-gray-300 bg-gray-50 px-5 py-3 text-sm shadow-sm
+        focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition"
       />
+    </div>
 
-      {/* Select All + Delete */}
-      <div className="flex justify-between mb-3">
-        <label className="flex gap-2 items-center">
-          <input
-            type="checkbox"
-            onChange={handleSelectAll}
-            checked={
-              currentItems.length > 0 &&
-              currentItems.every((u) => selectedIds.includes(u.id))
-            }
-          />
-          Select all (current page)
-        </label>
+    {/* Select All + Delete */}
+    <div className="flex items-center justify-between mb-3">
+      <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+        <input
+          type="checkbox"
+          onChange={handleSelectAll}
+          checked={currentItems.length > 0 && currentItems.every((u) => selectedIds.includes(u.id))}
+          className="h-4 w-4 accent-blue-600"
+        />
+        Select all (current page)
+      </label>
 
-        <button
-          onClick={handleDelete}
-          disabled={selectedIds.length === 0}
-          className="bg-red-600 text-white px-4 py-1 rounded disabled:bg-gray-300"
-        >
-          Delete Selected
-        </button>
-      </div>
+      <button
+        onClick={handleDelete}
+        disabled={selectedIds.length === 0}
+        className={`px-5 py-2 text-sm font-semibold rounded-xl transition
+          ${
+            selectedIds.length === 0
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-red-600 text-white hover:bg-red-700 shadow-md"
+          }`}
+      >
+        Delete Selected
+      </button>
+    </div>
 
-      {/* Table */}
-      <table className="w-full border">
-        <thead className="bg-gray-800 text-white">
-          <tr>
-            <th className="p-2">Select</th>
-            <th className="p-2">ID</th>
-            <th className="p-2">Name</th>
-            <th className="p-2">Email</th>
-            <th className="p-2">Actions</th>
-          </tr>
-        </thead>
+    {/* Table */}
+    <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm text-gray-700">
+          <thead className="sticky top-0 bg-gray-900 text-white">
+            <tr>
+              <th className="px-4 py-3 text-left">Select</th>
+              <th className="px-4 py-3 text-left">ID</th>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Email</th>
+              <th className="px-4 py-3">Actions</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {currentItems.map((user) => (
-            <tr key={user.id} className="border-b">
-              <td className="p-2 text-center">
-                <input
-                  type="checkbox"
-                  checked={selectedIds.includes(user.id)}
-                  onChange={() => handleSingleSelect(user.id)}
-                />
-              </td>
-
-              <td className="p-2">{user.id}</td>
-
-              <td className="p-2">
+          <tbody>
+            {currentItems.map((user, index) => (
+              <tr
+                key={user.id}
+                className={`border-b transition ${
+                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                } hover:bg-blue-50`}
+              >
+                <td className="px-4 py-3">
+                  <input
+                    type="checkbox"
+                    checked={selectedIds.includes(user.id)}
+                    onChange={() => handleSingleSelect(user.id)}
+                    className="h-4 w-4 accent-blue-600"
+                  />
+                </td>
+                <td className="px-4 py-3">{user.id}</td>
+                {/* <td className="px-4 py-3 font-medium">
+                  {user.firstName} {user.lastName}
+                </td> */}
+                <td className="p-2">
                 {editId === user.id ? (
                   <>
                     <input
@@ -684,6 +476,8 @@ function Paginations() {
                 )}
               </td>
 
+                
+                {/* <td className="px-4 py-3 text-gray-600">{user.email}</td> */}
               <td className="p-2">
                 {editId === user.id ? (
                   <input
@@ -697,7 +491,8 @@ function Paginations() {
                 )}
               </td>
 
-              <td className="p-2">
+                {/* Edit button */}
+               <td className="p-2">
                 {editId === user.id ? (
                   <>
                     <button
@@ -722,48 +517,72 @@ function Paginations() {
                   </button>
                 )}
               </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
 
-      {/* Pagination */}
-      <div className="flex justify-center gap-2 mt-4">
-        <button
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage((p) => p - 1)}
-          className="px-3 py-1 bg-gray-200 rounded"
-        >
-          Prev
-        </button>
-
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 rounded ${
-              currentPage === i + 1
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200"
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
-
-        <button
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage((p) => p + 1)}
-          className="px-3 py-1 bg-gray-200 rounded"
-        >
-          Next
-        </button>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  );
+
+    {/* Pagination info */}
+    <p className="text-center text-sm text-gray-500 mt-4">
+      Page <span className="font-semibold">{currentPage}</span> of{" "}
+      <span className="font-semibold">{totalPages}</span>
+    </p>
+
+    {/* Pagination buttons */}
+    <div className="flex justify-center items-center gap-2 mt-4 flex-wrap">
+      <button
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+        className={`px-4 py-2 rounded-xl text-sm font-medium transition
+          ${
+            currentPage === 1
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-blue-600 text-white hover:bg-blue-700 shadow"
+          }`}
+      >
+        Previous
+      </button>
+
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          key={i + 1}
+          onClick={() => setCurrentPage(i + 1)}
+          className={`px-3 py-2 rounded-xl text-sm font-medium transition
+            ${
+              currentPage === i + 1
+                ? "bg-blue-600 text-white shadow"
+                : "bg-gray-100 hover:bg-gray-200"
+            }`}
+        >
+          {i + 1}
+        </button>
+      ))}
+
+      <button
+        disabled={currentPage === totalPages}
+        onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+        className={`px-4 py-2 rounded-xl text-sm font-medium transition
+          ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-blue-600 text-white hover:bg-blue-700 shadow"
+          }`}
+      >
+        Next
+      </button>
+    </div>
+  </div>
+);
+
 }
 
 export default Paginations;
+
+
+
 
 
 
