@@ -214,9 +214,9 @@ const [filteredProducts, setFilteredProducts] = useState(() => {
   const indexOfLastItem = currentPage * itemsPerPage; // Last item index
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // First item index
   const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);// Current page items
-
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage); // Total pages
 
+// Api call to fetch user data
   useEffect(() => {
     async function fetchUserData() {
       try {
@@ -265,7 +265,6 @@ useEffect(() => {
 }, [searchTerm, originalData]);
 
   
-
   // 🔥 PAGE CHANGE hone pe checkbox items reset ho jayenge
   // useEffect(() => {
   //   setSelectedIds([]);
