@@ -8,8 +8,10 @@ import SeeText from "./AccordingSeemore/SeeText";
 import SinglSeeMore from "./AccordingSeemore/SingleSeeMore"
 import SeeMoreCard from "./AccordingSeemore/SeeMoreCard"
 import HoveringDrop from "./Dropdown/HoveringDrop"
-// import Dropdown from "./Dropdown/Dropdown";
+import Dropdown from "./Dropdown/Dropdown";
 import DropdownSelection from "./Dropdown/DropdownSelection";
+import ResponsiveNavbar from "./Dropdown/ResponsiveNavbar";
+import BottomNavbar from "./Dropdown/BottomNavbar";
 import RenderAllFile from "./StockProdct/RnderAllFile";
 import Paginations from "./Pagination/Paginations";
 function App() {
@@ -25,11 +27,13 @@ function App() {
 
       {/* <Paginations /> */}
 
-      {/* <Dropdown /> */}
+      {/* <Dropdown />/ */}
       {/* <DropdownSelection /> */}
+      {/* <ResponsiveNavbar /> */}
       {/* <HoveringDrop /> */}
+      <BottomNavbar />
 
-      <SearchInput/>
+      {/* <SearchInput/> */}
 
       {/* <According/> */}
 
