@@ -114,7 +114,6 @@ const BottomNavbar = () => {
     setMessages((prev) => ({
       ...prev,
       [activeUser.id]: [...(prev[activeUser.id] || []), message],
-    //   { ...PreviousState, [event.target.name]: event.target.value };
     }));
     setMessage("");
   };
@@ -150,8 +149,6 @@ const BottomNavbar = () => {
 //   // ✅ Step 5: message bhejne ke baad input box clear
 //   setMessage("");
 // };
-
-
 
 
 return (
@@ -257,7 +254,6 @@ return (
 };
 
 export default BottomNavbar;
-
 
 
 
