@@ -11,7 +11,8 @@ import HoveringDrop from "./Dropdown/HoveringDrop"
 import Dropdown from "./Dropdown/Dropdown";
 import DropdownSelection from "./Dropdown/DropdownSelection";
 import ResponsiveNavbar from "./Dropdown/ResponsiveNavbar";
-import BottomNavbar from "./Dropdown/BottomNavbar";
+import BottomNavbar from "./Popup/BottomNavbar";
+import Model from "./Popup/Model";
 import RenderAllFile from "./StockProdct/RnderAllFile";
 import Paginations from "./Pagination/Paginations";
 function App() {
@@ -31,7 +32,10 @@ function App() {
       {/* <DropdownSelection /> */}
       {/* <ResponsiveNavbar /> */}
       {/* <HoveringDrop /> */}
-      <BottomNavbar />
+
+      {/* <Model /> */}
+      {/* <BottomNavbar /> */}
+      <Model />
 
       {/* <SearchInput/> */}
 
