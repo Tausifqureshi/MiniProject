@@ -198,7 +198,7 @@
 
 // export default ProductList;
 
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, } from "react";
 import { CartContext } from "../context/CartProvider";
 
 const ProductList = () => {
@@ -287,7 +287,7 @@ const ProductList = () => {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-semibold mb-4">🛍️ Products</h2>
+      <h2 className="text-2xl font-semibold mb-4">🛍️ Products </h2>
 
       {/* Search */}
       <input
