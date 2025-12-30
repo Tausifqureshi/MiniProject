@@ -15,6 +15,7 @@ import BottomNavbar from "./Popup/BottomNavbar";
 import Model from "./Popup/Model";
 import RenderAllFile from "./StockProdct/RnderAllFile";
 import Paginations from "./Pagination/Paginations";
+import ImgSlider from "./ImageSlider/ImgSlider";
 function App() {
   return (
     <>
@@ -35,7 +36,8 @@ function App() {
 
       {/* <Model /> */}
       {/* <BottomNavbar /> */}
-      <Model />
+      {/* <Model /> */}
+      <ImgSlider />
 
       {/* <SearchInput/> */}
 

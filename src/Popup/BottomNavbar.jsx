@@ -1,24 +1,3 @@
-// import Recat from "react";
-// function BottomNavbar() {
-//   return (
-//     <>
-//       <h1> BottomNavbar</h1>
-//     </>
-//   );
-// }
-// export default BottomNavbar;
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 
 const users = [

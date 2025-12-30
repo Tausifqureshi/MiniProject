@@ -37,7 +37,7 @@ const Model = () => {
         }}
         className="fixed bottom-5 right-5 bg-[#0A66C2] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-blue-700"
       >
-        💬,
+        💬
       </button>
 
       {/* Chat Box */}
