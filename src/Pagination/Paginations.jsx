@@ -592,7 +592,11 @@ export default Paginations;
 
 
 
+// Frontend Engineer skilled in HTML5, CSS3, JavaScript (ES6+), TypeScript React.js, Next.js, Firebase, Node.js, Redux, React Router, Tailwind, Bootstrap, Material-UI, Git, Github, REST API 
+// LinkedIn https://www.linkedin.com/in/tausif-qureshi/
 
+
+// 917574863996
 
 
 
