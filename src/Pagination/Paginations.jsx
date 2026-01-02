@@ -240,7 +240,7 @@ useEffect(() => {
   if (searchTerm.trim() === "") {
     setFilteredProducts(originalData);
   } else {
-    setFilteredProducts(
+    setFilteredProducts( 
       originalData.filter(
         (u) =>
           u.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
