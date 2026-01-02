@@ -249,7 +249,7 @@ useEffect(() => {
     );
   }
 
-  const totalPagesAfterFilter = Math.ceil(filteredProducts.length / itemsPerPage); 
+  const totalPagesAfterFilter = Math.ceil(filteredProducts.length / itemsPerPage);  
   // filter lagne ke baad total pages calculate karo
 
   if (filteredProducts.length > 0 && currentPage > totalPagesAfterFilter) {
