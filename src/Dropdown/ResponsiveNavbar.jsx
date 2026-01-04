@@ -115,3 +115,24 @@ function ResponsiveNavbar() {
 
 export default ResponsiveNavbar;
   
+
+
+
+
+// I worked as a freelance Frontend Developer, building responsive and user-friendly web applications using React.js, Next.js, and TypeScript. My responsibilities included collaborating with clients to convert UI/UX designs into reusable components, integrating REST APIs, and ensuring the delivery of production-ready applications with optimized performance and cross-browser compatibility. I developed responsive web applications, implemented component-based UI architecture, and integrated dynamic data rendering through REST APIs. Additionally, I used Redux and Context API for state management, improved UI performance, responsiveness, and accessibility, and deployed applications on Vercel and Netlify. I also maintained clean and maintainable code using Git and GitHub, while continuously working with clients to enhance features and update requirements. My tools and technologies included React.js, Next.js, TypeScript, JavaScript (ES6+), Tailwind CSS, Material-UI, Redux, Git, GitHub, Firebase, Vercel, and Netlify.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Worked as a Freelance Frontend Developer, delivering scalable, responsive, and user-centric web applications using React.js, Next.js, and TypeScript. Collaborated closely with clients to translate UI/UX designs into clean, reusable, and maintainable components. Integrated REST APIs, implemented component-based architecture, and ensured production-ready applications with optimized performance and cross-browser compatibility. Used Redux and Context API for efficient state management, improved UI responsiveness, accessibility, and performance, and deployed applications on Vercel and Netlify. Maintained clean code and version control using Git and GitHub, while continuously enhancing features based on client requirements. Technologies: React.js, Next.js, TypeScript, JavaScript (ES6+), Tailwind CSS, Material UI, Redux, REST APIs, Git, GitHub, Firebase, Vercel, Netlify.
