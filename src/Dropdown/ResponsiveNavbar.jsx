@@ -128,9 +128,6 @@ export default ResponsiveNavbar;
 
 
 
-
-
-
 // Resume headline Naukri ki change 
 // Frontend Engineer skilled in HTML5, CSS3, JavaScript (ES6+), TypeScript, React.js, Next.js, Firebase, Node.js, Redux, React Router, Tailwind, Bootstrap, Material-UI, Git, GitHub, REST APIs.
 // LinkedIn: https://www.linkedin.com/in/tausif-qureshi/ 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, version } from "react";
 
 const images = [
   "https://picsum.photos/id/1018/600/300",
@@ -56,6 +56,8 @@ function ImgSlider() {
           Next
         </button>
       </div>
+
+      <h1>{version}</h1>
 
       {/* DOTS */}
       <div className="flex justify-center mt-3 gap-2">
