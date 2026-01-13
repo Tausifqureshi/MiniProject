@@ -17,6 +17,19 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
+
+// eh interceptor production me isliye use hota hai taaki jab token expire / invalid ho (401) to user ko automatically logout karke login page pe bhej de. React khud token expire check nahi karta, backend 401 bhejta hai aur yeh line React ko batati hai ke session khatam ho chuka hai.
+API.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+    return Promise.reject(err);
+  }
+);
+
 //
 // ---------------- AUTH APIs ----------------
 //
@@ -36,6 +49,7 @@ export const getCurrentUser = function () {
 // ---------------- CATEGORY APIs ----------------
 //
 export const getCategories = () => API.get("/categories");
+export const getCategoryById = (id) => API.get(`/categories/${id}`);
 
 //
 // ---------------- PRODUCT APIs ----------------
@@ -157,6 +171,320 @@ export function AppRoutes() {
     </Routes>
   );
 }
+
+
+
+
+// Login code compponent me use karna hai
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+
+const Login = () => {
+  const { login } = useAuth();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+
+  const validate = () => {
+    if (!form.email) return "Email required";
+    if (!/\S+@\S+\.\S+/.test(form.email)) return "Invalid email";
+    if (!form.password) return "Password required";
+    if (form.password.length < 6) return "Min 6 chars password";
+    return null;
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const msg = validate();
+    if (msg) return setError(msg);
+
+    try {
+      await login(form);
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
+    }
+  };
+
+  return (
+    <form onSubmit={submit}>
+      <h2>Login</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <input
+        placeholder="Email"
+        onChange={(e) => setForm({ ...form, email: e.target.value })}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setForm({ ...form, password: e.target.value })}
+      />
+      <button>Login</button>
+    </form>
+  );
+};
+
+// export default Login;
+
+
+
+// Signup component me use karna hai
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+
+const Signup = () => {
+  const { register } = useAuth();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+
+  const validate = () => {
+    if (!form.name) return "Name required";
+    if (!form.email) return "Email required";
+    if (!/\S+@\S+\.\S+/.test(form.email)) return "Invalid email";
+    if (form.password.length < 6) return "Password min 6 chars";
+    if (form.password !== form.confirmPassword)
+      return "Passwords do not match";
+    return null;
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const msg = validate();
+    if (msg) return setError(msg);
+
+    try {
+      await register(form);
+    } catch (err) {
+      setError(err.response?.data?.message || "Signup failed");
+    }
+  };
+
+  return (
+    <form onSubmit={submit}>
+      <h2>Signup</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <input placeholder="Name" onChange={(e) => setForm({ ...form, name: e.target.value })} />
+      <input placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
+      <input type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
+      <input type="password" placeholder="Confirm Password" onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })} />
+      <button>Create Account</button>
+    </form>
+  );
+};
+
+// export default Signup;
+
+
+
+
+
+
+
+
+
+// Category context 
+
+// src/context/CategoryContext.js
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { getCategories, getFilteredProducts } from "../api/api";
+
+const CategoryContext = createContext();
+
+export const CategoryProvider = ({ children }) => {
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filters, setFilters] = useState({
+    categories: [], // ← Multi-select categories
+    search: "",
+    priceMin: 0,
+    priceMax: 0,
+  });
+  const [loading, setLoading] = useState(true);
+
+  // Load categories
+  const loadCategories = async () => {
+    try {
+      const { data } = await getCategories();
+      setCategories(data);
+    } catch (err) {
+      console.error("Error loading categories", err);
+    }
+  };
+
+  // Load products based on filters
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      const queryParams = new URLSearchParams();
+
+      if (filters.categories.length) {
+        // Send multiple categories as comma-separated string
+        queryParams.append("category", filters.categories.join(","));
+      }
+      if (filters.search) queryParams.append("search", filters.search);
+      if (filters.priceMin) queryParams.append("priceMin", filters.priceMin);
+      if (filters.priceMax) queryParams.append("priceMax", filters.priceMax);
+
+      const { data } = await getFilteredProducts(queryParams.toString());
+      setProducts(data);
+    } catch (err) {
+      console.error("Error loading products", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Reload products when filters change
+  useEffect(() => {
+    loadProducts();
+  }, [filters]);
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  return (
+    <CategoryContext.Provider
+      value={{ categories, products, filters, setFilters, loading }}
+    >
+      {children}
+    </CategoryContext.Provider>
+  );
+};
+
+export const useCategory = () => useContext(CategoryContext);
+
+
+
+// category component me use karna hai
+// src/components/CategoryFilter.js
+import React, { useState } from "react";
+import { useCategory } from "../context/CategoryContext";
+
+const CategoryFilter = () => {
+  const { categories, filters, setFilters } = useCategory();
+  const [search, setSearch] = useState(filters.search || "");
+
+  const handleCategoryToggle = (categoryId) => {
+    setFilters((prev) => {
+      const isSelected = prev.categories.includes(categoryId);
+      let newCategories;
+      if (isSelected) {
+        newCategories = prev.categories.filter((id) => id !== categoryId);
+      } else {
+        newCategories = [...prev.categories, categoryId];
+      }
+      return { ...prev, categories: newCategories };
+    });
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setFilters((prev) => ({ ...prev, search }));
+  };
+
+  return (
+    <div className="p-4 bg-white shadow rounded mb-6">
+      {/* Search */}
+      <form onSubmit={handleSearchSubmit} className="flex gap-2 mb-4">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="border p-2 flex-grow rounded"
+        />
+        <button type="submit" className="bg-blue-600 text-white px-4 rounded">
+          Search
+        </button>
+      </form>
+
+      {/* Category Checkboxes */}
+      <div className="mb-4">
+        <p className="font-semibold mb-2">Filter by Category</p>
+        <div className="flex gap-4 flex-wrap">
+          {categories.map((cat) => (
+            <label key={cat._id} className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={filters.categories.includes(cat._id)}
+                onChange={() => handleCategoryToggle(cat._id)}
+                className="accent-blue-600"
+              />
+              {cat.name}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Price Filters */}
+      <div className="flex gap-4 flex-wrap">
+        <input
+          type="number"
+          name="priceMin"
+          placeholder="Min Price"
+          value={filters.priceMin}
+          onChange={handleFilterChange}
+          className="border p-2 rounded w-24"
+        />
+        <input
+          type="number"
+          name="priceMax"
+          placeholder="Max Price"
+          value={filters.priceMax}
+          onChange={handleFilterChange}
+          className="border p-2 rounded w-24"
+        />
+      </div>
+    </div>
+  );
+};
+
+// export default CategoryFilter;
+
+// product render 
+// src/components/ProductList.js
+import React from "react";
+import { useCategory } from "../context/CategoryContext";
+
+const ProductList = () => {
+  const { products, loading } = useCategory();
+
+  if (loading) return <p className="text-center mt-4">Loading products...</p>;
+  if (!products.length) return <p className="text-center mt-4">No products found</p>;
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {products.map((p) => (
+        <div key={p._id} className="border p-4 rounded shadow hover:shadow-lg transition">
+          <img
+            src={p.image}
+            alt={p.name}
+            className="w-full h-40 object-cover rounded mb-2"
+          />
+          <h3 className="font-semibold">{p.name}</h3>
+          <p className="text-gray-500">{p.category.name}</p>
+          <p className="mt-1 font-bold">${p.price}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ProductList;
+
+
+
+
+
 
 
 
