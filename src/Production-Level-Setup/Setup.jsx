@@ -277,16 +277,7 @@ const Signup = () => {
 
 // export default Signup;
 
-
-
-
-
-
-
-
-
-// Category context 
-
+// Category context  withs filter
 // src/context/CategoryContext.js
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { getCategories, getFilteredProducts } from "../api/api";
@@ -358,8 +349,7 @@ export const CategoryProvider = ({ children }) => {
 export const useCategory = () => useContext(CategoryContext);
 
 
-
-// category component me use karna hai
+// category filter components
 // src/components/CategoryFilter.js
 import React, { useState } from "react";
 import { useCategory } from "../context/CategoryContext";
@@ -450,7 +440,7 @@ const CategoryFilter = () => {
 
 // export default CategoryFilter;
 
-// product render 
+// filter product render component
 // src/components/ProductList.js
 import React from "react";
 import { useCategory } from "../context/CategoryContext";
