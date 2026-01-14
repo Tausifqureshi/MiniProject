@@ -141,4 +141,5 @@ export default ResponsiveNavbar;
 
 
 
-//  8543212587 
+// Profile Summary naukri 
+// Frontend Developer with 1+ year of hands-on experience building real-world web applications using React.js, Next.js, JavaScript (ES6+), and TypeScript. Skilled in component-based architecture, responsive UI development, state management with Redux and Context API, and REST API integration. Experienced in converting UI/UX designs into clean, reusable, and production-ready components using HTML5, CSS3, Tailwind CSS, and Material UI. Actively seeking Frontend Developer / React Developer opportunities.
