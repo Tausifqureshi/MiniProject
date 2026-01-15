@@ -93,7 +93,7 @@ return (
 
    
    {open && (
-  <>
+  <> 
     {activeUser ? ( //agar activeUser ne user id select kiya hai to ye show karo
       /* ================= CHAT WINDOW ================= */
       <>
