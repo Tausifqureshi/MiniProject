@@ -22,151 +22,135 @@ const BottomNavbar = () => {
     setMessage("");
   };
 
+  //   const sendMessage = () => {
 
+  //   // ❌ Agar message empty hai ya koi user select nahi hai
+  //   // to function yahin stop ho jaaye
+  //   if (!message.trim() || !activeUser) return;
 
-//   const sendMessage = () => {
+  //   // ✅ Messages state update ho rahi hai
+  //   setMessages((prev) => ({
 
-//   // ❌ Agar message empty hai ya koi user select nahi hai
-//   // to function yahin stop ho jaaye
-//   if (!message.trim() || !activeUser) return;
+  //     // 🔹 Step 1: purana poora messages object copy karo
+  //     // taaki baaki users ke chats delete na ho
+  //     ...prev,
 
-//   // ✅ Messages state update ho rahi hai
-//   setMessages((prev) => ({
+  //     // 🔹 Step 2: jis user ke saath chat open hai
+  //     // uski ID ko key bana rahe hain
+  //     [activeUser.id]: [
 
-//     // 🔹 Step 1: purana poora messages object copy karo
-//     // taaki baaki users ke chats delete na ho
-//     ...prev,
+  //       // 🔹 Step 3: agar us user ke purane messages hain
+  //       // to unko copy karo
+  //       ...(prev[activeUser.id] || []),
 
-//     // 🔹 Step 2: jis user ke saath chat open hai
-//     // uski ID ko key bana rahe hain
-//     [activeUser.id]: [
+  //       // 🔹 Step 4: naya message last me add karo
+  //       message
+  //     ],
+  //   }));
 
-//       // 🔹 Step 3: agar us user ke purane messages hain
-//       // to unko copy karo
-//       ...(prev[activeUser.id] || []),
+  //   // ✅ Step 5: message bhejne ke baad input box clear
+  //   setMessage("");
+  // };
 
-//       // 🔹 Step 4: naya message last me add karo
-//       message
-//     ],
-//   }));
-
-//   // ✅ Step 5: message bhejne ke baad input box clear
-//   setMessage("");
-// };
-
-
-return (
-  <>
-    {/* MAIN CHAT BOX */}
-    <div
-      className={`fixed bottom-0 right-6 w-72 bg-white shadow-2xl rounded-t-xl
+  return (
+    <>
+      {/* MAIN CHAT BOX */}
+      <div
+        className={`fixed bottom-0 right-6 w-72 bg-white shadow-2xl rounded-t-xl
       transition-transform duration-300 flex flex-col
       ${open ? "translate-y-0" : "translate-y-[370px]"}`}
-      style={{ height: "420px" }}
-    >
-      {/* HEADER (same bar for open / close) */}
-      <div
-        onClick={(e) => {
-          e.stopPropagation();   // parent click rok do
-          setOpen(!open); // toggle open / close
-          setActiveUser(null); //sirf chat close karo
-        }}
-        className="bg-[#0A66C2] text-white px-4 py-3 flex justify-between items-center rounded-t-xl cursor-pointer"
+        style={{ height: "420px" }}
       >
-        {activeUser ? (
-          <div
-            className="flex items-center gap-2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button onClick={() => setActiveUser(null)}> ← </button> {/* chat se bahar jaane ke liye */}
-            <span className="font-semibold">{activeUser.name}</span>
-          </div>
-        ) : (
-          <span className="font-medium">Messaging</span>
-        )}
-
-        {/* 🔥 ONLY ARROW (LinkedIn style) */}
-        <span className="text-lg font-bold">
-          {open ? "▼" : "▲"}
-        </span>
-      </div>
-
-   
-   {open && (
-  <> 
-    {activeUser ? ( //agar activeUser ne user id select kiya hai to ye show karo
-      /* ================= CHAT WINDOW ================= */
-      <>
-        {/* Messages */}
-        <div className="flex-1 p-3 overflow-y-auto space-y-2">
-          {(messages[activeUser.id] || []).length === 0 && (
-            <p className="text-gray-400 text-center mt-20">
-              Start a conversation
-            </p>
+        {/* HEADER (same bar for open / close) */}
+        <div
+          onClick={(e) => {
+            e.stopPropagation(); // parent click rok do
+            setOpen(!open); // toggle open / close
+            setActiveUser(null); //sirf chat close karo
+          }}
+          className="bg-[#0A66C2] text-white px-4 py-3 flex justify-between items-center rounded-t-xl cursor-pointer"
+        >
+          {activeUser ? (
+            <div
+              className="flex items-center gap-2"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button onClick={() => setActiveUser(null)}> ← </button>{" "}
+              {/* chat se bahar jaane ke liye */}
+              <span className="font-semibold">{activeUser.name}</span>
+            </div>
+          ) : (
+            <span className="font-medium">Messaging</span>
           )}
 
-          {(messages[activeUser.id] || []).map((msg, i) => (
-            <div
-              key={i}
-              className="bg-blue-100 px-3 py-2 rounded-lg text-sm w-fit max-w-[80%]"
-            >
-              {msg}
-            </div>
-          ))}
+          {/* 🔥 ONLY ARROW (LinkedIn style) */}
+          <span className="text-lg font-bold">{open ? "▼" : "▲"}</span>
         </div>
 
-        {/* INPUT */}
-        <div className="p-3 border-t flex gap-2">
-          <input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-            placeholder="Write a message..."
-            className="flex-1 border rounded-lg px-3 py-2 text-sm"
-          />
-          <button
-            onClick={sendMessage}
-            className="bg-[#0A66C2] text-white px-4 rounded-lg text-sm"
-          >
-            Send
-          </button>
-        </div>
-      </>
-    ) : ( //agar activeUser ne select nhi kiya hai to ye show karo
-      /* ================= USERS LIST ================= */
-      <div className="flex-1 overflow-y-auto">
-        {users.map((user) => (
-          <div
-            key={user.id}
-            onClick={() => setActiveUser(user)}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 cursor-pointer border-b"
-          >
-            <span className="text-2xl">{user.avatar}</span>
-            <span className="text-sm font-medium">{user.name}</span>
-          </div>
-        ))}
+        {open && (
+          <>
+            {activeUser ? ( //agar activeUser ne user id select kiya hai to ye show karo
+              /* ================= CHAT WINDOW ================= */
+              <>
+                {/* Messages */}
+                <div className="flex-1 p-3 overflow-y-auto space-y-2">
+                  {(messages[activeUser.id] || []).length === 0 && (
+                    <p className="text-gray-400 text-center mt-20">
+                      Start a conversation
+                    </p>
+                  )}
+
+                  {(messages[activeUser.id] || []).map((msg, i) => (
+                    <div
+                      key={i}
+                      className="bg-blue-100 px-3 py-2 rounded-lg text-sm w-fit max-w-[80%]"
+                    >
+                      {msg}
+                    </div>
+                  ))}
+                </div>
+
+                {/* INPUT */}
+                <div className="p-3 border-t flex gap-2">
+                  <input
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                    placeholder="Write a message..."
+                    className="flex-1 border rounded-lg px-3 py-2 text-sm"
+                  />
+                  <button
+                    onClick={sendMessage}
+                    className="bg-[#0A66C2] text-white px-4 rounded-lg text-sm"
+                  >
+                    Send
+                  </button>
+                </div>
+              </>
+            ) : (
+              //agar activeUser ne select nhi kiya hai to ye show karo
+              /* ================= USERS LIST ================= */
+              <div className="flex-1 overflow-y-auto">
+                {users.map((user) => (
+                  <div
+                    key={user.id}
+                    onClick={() => setActiveUser(user)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 cursor-pointer border-b"
+                  >
+                    <span className="text-2xl">{user.avatar}</span>
+                    <span className="text-sm font-medium">{user.name}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </div>
-    )}
-  </>
-)}
-
-    </div>
-  </>
-);
-
-
+    </>
+  );
 };
 
 export default BottomNavbar;
-
-
-
-
-
-
- 
-
-
 
 //    {open && (
 //         <>
