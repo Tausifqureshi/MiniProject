@@ -136,8 +136,7 @@ export default ResponsiveNavbar;
 // I am an immediate joiner & looking for a Frontend Developer role. Experienced professional with 1+ year of experience in React.js, Next.js, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS & Redux.
 
 
-// React.js Frontend Developer | Next.js | TypeScript | UI Development
-
+// React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS
 
 
 
