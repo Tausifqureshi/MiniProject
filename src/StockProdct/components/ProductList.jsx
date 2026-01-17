@@ -240,7 +240,7 @@ const ProductList = () => {
   // FILTER LOGIC
   useEffect(() => {
     setLoading(true); // filter change pe loading true
-    const timeout = setTimeout(() => {
+    const timeout = setTimeout(() => { // debounce for smoothness
       const filtered = stockProducts
         .filter(
           (p) =>
@@ -264,7 +264,7 @@ const ProductList = () => {
 
       setFilteredProducts(filtered);
       setCurrentPage(1); // filter change pe page reset
-      setLoading(false);
+      setLoading(false); // filter complete hone pe loading false
     }, 1000); // 1000ms delay for smoothness
 
     return () => clearTimeout(timeout);

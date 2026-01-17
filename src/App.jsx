@@ -27,17 +27,17 @@ function App() {
 
       {/* <RenderAllFile /> */}
 
-      {/* <Paginations /> */}
+      <Paginations />
 
-      {/* <Dropdown />/ */}
+      {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
       {/* <ResponsiveNavbar /> */}
       {/* <HoveringDrop /> */}
 
       {/* <Model /> */}
-      {/* <BottomNavbar /> */}
+      {/* <BottomNavbar />  */}
       {/* <Model /> */}
-      <ImgSlider />
+      {/* <ImgSlider /> */}
 
       {/* <SearchInput/> */}
 

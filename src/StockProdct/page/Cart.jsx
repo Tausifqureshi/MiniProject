@@ -89,7 +89,7 @@ const Cart = () => {
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
 
-  return (
+  return ( 
     <div className="mt-10 max-w-3xl mx-auto px-4">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">🛒 Your Cart</h2>
 
