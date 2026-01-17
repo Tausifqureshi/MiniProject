@@ -137,7 +137,7 @@ export default ResponsiveNavbar;
 
 
 // React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS
-
+ 
 
 
 // Profile Summary naukri 
