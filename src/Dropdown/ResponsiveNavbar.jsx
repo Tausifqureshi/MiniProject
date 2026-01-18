@@ -133,11 +133,7 @@ export default ResponsiveNavbar;
 // LinkedIn: https://www.linkedin.com/in/tausif-qureshi/ 
 
 // resume headline ki change
-// I am an immediate joiner & looking for a Frontend Developer role. Experienced professional with 1+ year of experience in React.js, Next.js, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS & Redux.
-
-
-// React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS
- 
+//React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS | Responsive UI & Performance Optimization 
 
 
 // Profile Summary naukri 
