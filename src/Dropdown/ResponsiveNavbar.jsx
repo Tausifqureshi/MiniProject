@@ -137,4 +137,4 @@ export default ResponsiveNavbar;
 
 
 // Profile Summary naukri 
-// Frontend Developer with 1+ year of experience building scalable web applications using React.js, Next.js, JavaScript (ES6+), and TypeScript. Skilled in creating responsive and reusable UI components, managing state with Redux and Context API, and integrating REST APIs. Experienced in converting UI/UX designs into production-ready components using HTML5, CSS3, Tailwind CSS, and Material UI. Looking forward to contributing as a Frontend/React Developer in a dynamic team.
+// Frontend Developer with 1+ year of experience building scalable web applications using React.js, Next.js, JavaScript (ES6+), and TypeScript. Skilled in creating responsive and reusable UI components, managing state with Redux and Context API, and integrating REST APIs. Experienced in converting UI/UX designs into production-ready components using HTML5, CSS3, Tailwind CSS, and Material UI. Looking forward to contributing as a Frontend/React Developer in a dynam ic team.
