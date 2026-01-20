@@ -136,5 +136,16 @@ export default ResponsiveNavbar;
 //React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS | Responsive UI & Performance Optimization 
 
 
+// Frontend Developer (React.js / Next.js) | 1+ Year Experience | TypeScript, Redux, REST APIs | Performance Optimized & Responsive Web Apps
+
+
 // Profile Summary naukri 
 // Frontend Developer with 1+ year of experience building scalable web applications using React.js, Next.js, JavaScript (ES6+), and TypeScript. Skilled in creating responsive and reusable UI components, managing state with Redux and Context API, and integrating REST APIs. Experienced in converting UI/UX designs into production-ready components using HTML5, CSS3, Tailwind CSS, and Material UI. Looking forward to contributing as a Frontend/React Developer in a dynam ic team.
+
+
+// 1-Day----> Tausif_Qureshi_Frontend_Developer_React.pdfz
+// 2-Day----> Tausif_Qureshi_React_Frontend_Developer.pdf
+// 3-Day----> Tausif_Qureshi_ReactJS_Developer.pdf
+// 4-Day----> Tausif_Qureshi_Frontend_Developer_1.5Y.pdf
+// 5-Day----> Tausif_Qureshi_React_NextJS_Developer.pdf
+// 6-Day----> Tausif_Qureshi_UI_Frontend_Developer.pdf

@@ -13,6 +13,7 @@ dist-ssr
 *.local   
 text.pyt
 Dyami.pyt
+Naukti
 
 # Editor directories and files
 .vscode/*
