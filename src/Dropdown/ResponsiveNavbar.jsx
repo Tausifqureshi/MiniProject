@@ -150,11 +150,11 @@ export default ResponsiveNavbar;
 // 6-Day----> Tausif_Qureshi_UI_Frontend_Developer.pdf
 
 
+ 
 
 
 
 
-
-
+ 
 // Worked as a Freelance Frontend Developer, delivering scalable, responsive, and high-performance web applications using React 18+, Next.js, and TypeScript. Implemented component-based architecture and reusable UI components with Material-UI and Tailwind CSS. Managed application state efficiently using Redux and Redux Toolkit (RTK), integrated REST APIs, and wrote unit and component tests using Jest and React Testing Library. Collaborated closely with clients to translate UI/UX designs into maintainable components and ensured cross-browser compatibility. Deployed production-ready applications on Vercel and Netlify and maintained version control using Git and GitHub. Continuously enhanced features based on client requirements.
 // Technologies: React 18+, Next.js, TypeScript, Redux, Redux Toolkit (RTK), Context API, JavaScript (ES6+), Tailwind CSS, Material-UI, REST APIs, Firebase, Git, GitHub, Vercel, Netlify, Jest, React Testing Library.
