@@ -582,21 +582,9 @@ export default Paginations;
 
 
 
-// yaha jo left site wali image hai us me chnage karna hai right site wali ko dehk ka jo bg right site wale me hai same left site wale me hona or left site wali ka hair look bhi professinoal lagna  right site wale ki tara nhu hair look nhi chiaye or right site wale ne jo cort phena hai same ohi cort left wale me ana jis tara righte site wali phote righgt site cover hau same left ko bhi asia bana ke dena or jis tara ka dark left me hai skin toda left site wale me bbi aisa na lage yaha ai se banayi hohi phote hai ok jaldi bana ke do jo jo bola bus ohi chnage or sub same left site wale ka ok 
 
 
 
-
-// bhai me tuje image send kar rha ho us ki dehk me kya bora us ki dehk ke chnage karna hoga. bhai meri baat sun yaha jo left site ki image is me chnage karna hai right site wali me touch bh nhi karna right site wali ko dehk ke jo jo bolra o change karna hai smaja tu right site wali me ji background use o left wali me bhi hona jo right site wali me ligntig jaisi hai same left site wali image me bho hona or left site wale ka hair jisa hai vaisa hi rehe ga bs jo jo me boka right site wale se o le or court bhu right site wali lmage ka color same ohi color left wale me bhi hona smaaj ab meri baat bus left site wali image ko chnage karna hai right wali ki dehk ke jo jo me boal bus utna hi chnage ok  
-
-
-
-
-// Frontend Engineer skilled in HTML5, CSS3, JavaScript (ES6+), TypeScript React.js, Next.js, Firebase, Node.js, Redux, React Router, Tailwind, Bootstrap, Material-UI, Git, Github, REST API 
-// LinkedIn https://www.linkedin.com/in/tausif-qureshi/
-
-
-// 917574863996
 
 
 

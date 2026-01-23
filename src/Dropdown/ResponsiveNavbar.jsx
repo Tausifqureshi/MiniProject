@@ -133,8 +133,6 @@ export default ResponsiveNavbar;
 // LinkedIn: https://www.linkedin.com/in/tausif-qureshi/ 
 
 // resume headline ki change
-//React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS | Responsive UI & Performance Optimization 
-
 
 //React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS | Responsive UI & Performance Optimization
 
