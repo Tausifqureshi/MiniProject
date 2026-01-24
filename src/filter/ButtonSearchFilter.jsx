@@ -69,6 +69,6 @@ function ButtonSearchFilter() {
       )}
     </div>
   );
-}
+} 
 
 export default ButtonSearchFilter;
