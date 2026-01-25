@@ -38,7 +38,7 @@ function SeeMoreText() {
 
       <div className="max-w-3xl mx-auto space-y-4">
         {cardData.map((item, index) => {
-          const isExpanded = expanded[index] || false;
+          const isExpanded = expanded[index] || false; //agar is item ka text expanded hai to true, warna false
           const shortText =
             item.text.length > 100 ? item.text.slice(0, 100) + "..." : item.text;
 

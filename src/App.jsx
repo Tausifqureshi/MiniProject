@@ -25,7 +25,7 @@ function App() {
       <h1>Mini Project </h1>
       {/* <RouterEax /> */}
 
-      <RenderAllFile />
+      {/* <RenderAllFile /> */}
 
       {/* <Paginations /> */}
 
@@ -45,7 +45,7 @@ function App() {
 
       {/* <SeeMoreAccording /> */}
       {/* <SeeText/> */}
-      {/* <SinglSeeMore /> */}
+      <SinglSeeMore />
       {/* <SeeMoreCard/> */}
       {/* <Prectice /> */}
     </>

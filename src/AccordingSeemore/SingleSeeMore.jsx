@@ -41,7 +41,7 @@ function SingleSeeMore() {
       <div className="max-w-3xl mx-auto space-y-4">
         {cardData.map((item, index) => {
           const isExpanded = expandedIndex === index;
-          const shortText =
+          const shortText = 
             item.text.length > 100 ? item.text.slice(0, 100) + "..." : item.text;
 
           return (
