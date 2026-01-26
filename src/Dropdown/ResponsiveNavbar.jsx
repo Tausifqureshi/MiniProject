@@ -143,7 +143,7 @@ export default ResponsiveNavbar;
 // 1-Day----> Tausif_Qureshi_Frontend_Developer_React.pdfz 
 // 2-Day----> Tausif_Qureshi_React_Frontend_Developer.pdf
 // 3-Day----> Tausif_Qureshi_ReactJS_Developer.pdf
-// 4-Day----> Tausif_Qureshi_Frontend_Developer_1.5Y.pdf
+// 4-Day----> Tausif_Qureshi_Frontend_Developer_1.5Y.pdf  
 // 5-Day----> Tausif_Qureshi_React_NextJS_Developer.pdf
 // 6-Day----> Tausif_Qureshi_UI_Frontend_Developer.pdf
 
