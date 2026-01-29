@@ -396,6 +396,7 @@ return (
 
     {/* Select All + Delete */}
     <div className="flex items-center justify-between mb-3">
+       
       <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
         <input
           type="checkbox"
@@ -404,7 +405,7 @@ return (
           className="h-4 w-4 accent-blue-600"
         />
         Select all (current page)
-      </label>
+      </ label>
 
       <button
         onClick={handleDelete}

@@ -32,7 +32,7 @@ function App() {
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
       {/* <ResponsiveNavbar /> */}
-      <HoveringDrop />
+      {/* <HoveringDrop /> */}
 
       {/* <Model /> */}
       {/* <BottomNavbar />  */}
@@ -43,7 +43,7 @@ function App() {
 
       {/* <According/> */}
 
-      {/* <SeeMoreAccording /> */}
+      <SeeMoreAccording />
       {/* <SeeText/> */}
       {/* <SinglSeeMore /> */}
       {/* <SeeMoreCard/> */}

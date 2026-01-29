@@ -14,17 +14,34 @@ const Model = () => {
   const outSiteClose = useRef(null);
   
    //Click outside to close the chat box
- useEffect(() => {
-    const handleClickOutside = (e) => {
-      if ( outSiteClose.current &&!outSiteClose.current.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+//  useEffect(() => {
+//     const handleClickOutside = (e) => {
+//       if ( outSiteClose.current &&!outSiteClose.current.contains(e.target)) {
+//         setOpen(false);
+//       }
+//     };
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, []);
+
+// const outSiteClose = useRef(null);
+const buttonRef = useRef(null);
+
+useEffect(() => {
+  const handleClickOutside = (e) => {
+    if (outSiteClose.current && !outSiteClose.current.contains(e.target) && buttonRef.current && !buttonRef.current.contains(e.target)) {
+      setOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
 
   return (
     <>
@@ -35,6 +52,7 @@ const Model = () => {
             e.stopPropagation(); // 🔥 ye line important
             setOpen(!open);
         }}
+        ref={buttonRef}
         className="fixed bottom-5 right-5 bg-[#0A66C2] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-blue-700"
       >
         💬

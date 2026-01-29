@@ -69,7 +69,8 @@ const BottomNavbar = () => {
             setActiveUser(null); //sirf chat close karo
           }}
           className="bg-[#0A66C2] text-white px-4 py-3 flex justify-between items-center rounded-t-xl cursor-pointer"
-        >
+        > 
+        {/* jaan */}
           {activeUser ? (
             <div
               className="flex items-center gap-2"
