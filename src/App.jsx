@@ -35,7 +35,7 @@ function App() {
       {/* <HoveringDrop /> */}
 
       {/* <Model /> */}
-      {/* <BottomNavbar />  */}
+      <BottomNavbar /> 
       {/* <Model /> */}
       {/* <ImgSlider /> */}
 
@@ -43,7 +43,7 @@ function App() {
 
       {/* <According/> */}
 
-      <SeeMoreAccording />
+      {/* <SeeMoreAccording /> */}
       {/* <SeeText/> */}
       {/* <SinglSeeMore /> */}
       {/* <SeeMoreCard/> */}
