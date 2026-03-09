@@ -27,7 +27,7 @@ function App() {
 
       {/* <RenderAllFile /> */}
 
-      {/* <Paginations /> */}
+      <Paginations />
 
       {/* <Dropdown /> */}
       {/* <DropdownSelection /> */}
@@ -35,7 +35,7 @@ function App() {
       {/* <HoveringDrop /> */}
 
       {/* <Model /> */}
-      <BottomNavbar /> 
+      {/* <BottomNavbar />  */}
       {/* <Model /> */}
       {/* <ImgSlider /> */}
 
