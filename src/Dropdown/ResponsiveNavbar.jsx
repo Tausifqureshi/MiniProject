@@ -132,7 +132,7 @@ export default ResponsiveNavbar;
 // Frontend Engineer skilled in HTML5, CSS3, JavaScript (ES6+), TypeScript, React.js, Next.js, Firebase, Node.js, Redux, React Router, Tailwind, Bootstrap, Material-UI, Git, GitHub, REST APIs.
 // LinkedIn: https://www.linkedin.com/in/tausif-qureshi/ 
 
-// resume headline ki change
+// resume headline ki change 
 
 //React Frontend Developer with 1+ Year Experience | React.js, Next.js, TypeScript | Redux, REST APIs, Tailwind CSS | Responsive UI & Performance Optimization
 
