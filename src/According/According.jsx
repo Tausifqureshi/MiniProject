@@ -20,7 +20,7 @@ export default function According() {
       text: "AI healthcare chatbot patients ke questions answer karta hai aur unhe appointment ya medicine reminder bhi de sakta hai. Ye React + OpenAI API se build hota hai aur advanced NLP features provide karta hai.",
     },
   ];
- 
+
   const handleToggle = (index) => {
     setOpenIndex(openIndex !== index ? index : null);
   };
@@ -49,9 +49,8 @@ export default function According() {
                   {item.title}
                 </h3>
                 <span
-                  className={`transform transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-blue-600" : "rotate-0 text-gray-500"
-                  }`}
+                  className={`transform transition-transform duration-300 ${isOpen ? "rotate-180 text-blue-600" : "rotate-0 text-gray-500"
+                    }`}
                 >
                   ▼
                 </span>
@@ -59,9 +58,8 @@ export default function According() {
 
               {/* Body */}
               <div
-                className={`transition-all duration-500 ease-in-out ${
-                  isOpen ? "max-h-60 px-5 pb-4 opacity-100" : "max-h-0 opacity-0"
-                } overflow-hidden`}
+                className={`transition-all duration-500 ease-in-out ${isOpen ? "max-h-60 px-5 pb-4 opacity-100" : "max-h-0 opacity-0"
+                  } overflow-hidden`}
               >
                 <p className="text-gray-600">{item.text}</p>
               </div>
