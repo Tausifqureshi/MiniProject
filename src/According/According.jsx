@@ -9,8 +9,8 @@ export default function According() {
       title: "Hospital Management System",
       text: "Hospital management system me doctor, patient, schedule aur billing module hota hai. React + Firebase se ye project bana sakte hain. Isme authentication, live appointments aur smart scheduling hota hai.",
     },
-    {
-      id: 2,
+    { 
+      id: 2
       title: "Smart City Dashboard",
       text: "Smart city dashboard me sensors data, live traffic, air quality aur waste management analytics show hota hai. Isme chart.js aur Firebase realtime data use hota hai. Ye ek modern city monitoring system banata hai.",
     },
