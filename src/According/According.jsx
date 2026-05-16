@@ -5,7 +5,7 @@ export default function According() {
 
   const accordionData = [
     {
-      id: 1,
+      id: 1, 
       title: "Hospital Management System",
       text: "Hospital management system me doctor, patient, schedule aur billing module hota hai. React + Firebase se ye project bana sakte hain. Isme authentication, live appointments aur smart scheduling hota hai.",
     },
